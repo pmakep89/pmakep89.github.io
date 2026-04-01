@@ -1072,7 +1072,7 @@ function closeModal() {
 
 // ─── Claude API (Netlify Function 경유) ──────────────
 async function callClaude(prompt) {
-  const response = await fetch('/.netlify/functions/fortune', {
+  const response = await fetch('/api/fortune', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ prompt }),
