@@ -28,28 +28,62 @@
 
   body {
     font-family: 'Noto Sans KR', sans-serif;
-    background: var(--bg);
+    background: radial-gradient(ellipse at 50% 0%, #1a0a2e 0%, #0a0515 40%, #080b14 100%);
     color: var(--text);
     min-height: 100vh;
     overflow-x: hidden;
   }
 
-  /* Stars background */
+  /* 성운 배경 */
   body::before {
     content:'';
     position:fixed; inset:0;
     background:
-      radial-gradient(ellipse at 20% 50%, rgba(124,92,191,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.06) 0%, transparent 50%),
-      radial-gradient(ellipse at 60% 80%, rgba(45,212,191,0.05) 0%, transparent 50%);
+      radial-gradient(ellipse at 15% 30%, rgba(138,43,226,0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 85% 20%, rgba(201,168,76,0.12) 0%, transparent 45%),
+      radial-gradient(ellipse at 70% 75%, rgba(72,61,139,0.2) 0%, transparent 55%),
+      radial-gradient(ellipse at 25% 80%, rgba(0,100,150,0.1) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 50%, rgba(100,0,150,0.08) 0%, transparent 70%);
     pointer-events:none; z-index:0;
-    animation: bgPulse 8s ease-in-out infinite alternate;
+    animation: nebulaPulse 10s ease-in-out infinite alternate;
   }
-  @keyframes bgPulse {
-    from { opacity:0.6; }
-    to { opacity:1; }
+  body::after {
+    content:'';
+    position:fixed; inset:0;
+    background:
+      radial-gradient(ellipse at 90% 60%, rgba(255,100,200,0.06) 0%, transparent 40%),
+      radial-gradient(ellipse at 10% 60%, rgba(100,200,255,0.06) 0%, transparent 40%);
+    pointer-events:none; z-index:0;
+    animation: nebulaPulse 14s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes nebulaPulse {
+    from { opacity:0.5; transform:scale(1); }
+    to { opacity:1; transform:scale(1.05); }
   }
 
+  /* 달 */
+  .moon {
+    position:fixed; top:60px; right:80px;
+    width:70px; height:70px;
+    border-radius:50%;
+    background: radial-gradient(circle at 35% 35%, #fffde7, #f5d060 40%, #c9a84c 70%, #8b6914);
+    box-shadow: 0 0 30px rgba(201,168,76,0.4), 0 0 60px rgba(201,168,76,0.15), inset -8px -8px 20px rgba(0,0,0,0.3);
+    z-index:1; pointer-events:none;
+    animation: moonGlow 4s ease-in-out infinite alternate;
+  }
+  .moon::before {
+    content:'';
+    position:absolute; top:12px; left:16px;
+    width:12px; height:12px; border-radius:50%;
+    background:rgba(0,0,0,0.15);
+    box-shadow: 18px 8px 0 rgba(0,0,0,0.1), 8px 25px 0 rgba(0,0,0,0.08);
+  }
+  @keyframes moonGlow {
+    from { box-shadow:0 0 20px rgba(201,168,76,0.3), 0 0 40px rgba(201,168,76,0.1), inset -8px -8px 20px rgba(0,0,0,0.3); }
+    to { box-shadow:0 0 40px rgba(201,168,76,0.6), 0 0 80px rgba(201,168,76,0.25), inset -8px -8px 20px rgba(0,0,0,0.3); }
+  }
+
+  /* 별 */
   .stars {
     position:fixed; inset:0; pointer-events:none; z-index:0;
     overflow:hidden;
@@ -58,9 +92,36 @@
     position:absolute; border-radius:50%;
     background:#fff; animation: twinkle var(--d, 3s) var(--delay, 0s) ease-in-out infinite alternate;
   }
+  .star.big {
+    background: radial-gradient(circle, #fff 0%, rgba(201,168,76,0.8) 50%, transparent 100%);
+    box-shadow: 0 0 6px rgba(255,255,255,0.8);
+  }
   @keyframes twinkle {
     from { opacity:0.1; transform:scale(0.8); }
-    to { opacity:0.9; transform:scale(1.2); }
+    to { opacity:1; transform:scale(1.3); }
+  }
+
+  /* 유성 */
+  .shooting-star {
+    position:fixed; pointer-events:none; z-index:1;
+    width:2px; height:2px; border-radius:50%;
+    background:white;
+    box-shadow: 0 0 4px white;
+    animation: shoot var(--dur, 3s) var(--delay, 0s) linear infinite;
+    opacity:0;
+  }
+  @keyframes shoot {
+    0% { opacity:0; transform:translate(0,0) rotate(-45deg); }
+    5% { opacity:1; }
+    30% { opacity:0; transform:translate(300px, 300px) rotate(-45deg); }
+    100% { opacity:0; transform:translate(300px, 300px) rotate(-45deg); }
+  }
+  .shooting-star::after {
+    content:'';
+    position:absolute; top:0; right:2px;
+    width:80px; height:1px;
+    background:linear-gradient(to left, white, transparent);
+    transform:translateX(100%);
   }
 
   /* Header */
@@ -107,6 +168,7 @@
     padding: 20px 16px 0;
     scrollbar-width:none; -webkit-overflow-scrolling:touch;
     max-width: 900px; margin: 0 auto;
+    justify-content: center;
   }
   .tab-nav::-webkit-scrollbar { display:none; }
   .tab-btn {
@@ -441,7 +503,9 @@
 <body>
 
 <!-- Stars -->
+<div class="moon"></div>
 <div class="stars" id="stars"></div>
+<div id="shooting-stars"></div>
 
 <!-- Header -->
 <header>
@@ -1466,18 +1530,33 @@
 // ─── Stars ───────────────────────────────────────────
 (function createStars() {
   const container = document.getElementById('stars');
-  for (let i = 0; i < 80; i++) {
+  for (let i = 0; i < 150; i++) {
     const s = document.createElement('div');
-    s.className = 'star';
-    const size = Math.random() * 2 + 0.5;
+    const isBig = Math.random() < 0.15;
+    s.className = 'star' + (isBig ? ' big' : '');
+    const size = isBig ? Math.random() * 3 + 2 : Math.random() * 1.5 + 0.5;
     s.style.cssText = `
       width:${size}px; height:${size}px;
       left:${Math.random()*100}%;
       top:${Math.random()*100}%;
-      --d:${2+Math.random()*4}s;
-      --delay:${Math.random()*4}s;
+      --d:${2+Math.random()*5}s;
+      --delay:${Math.random()*6}s;
     `;
     container.appendChild(s);
+  }
+
+  // 유성 생성
+  const ssContainer = document.getElementById('shooting-stars');
+  for (let i = 0; i < 5; i++) {
+    const ss = document.createElement('div');
+    ss.className = 'shooting-star';
+    ss.style.cssText = `
+      left:${10 + Math.random()*60}%;
+      top:${Math.random()*40}%;
+      --dur:${6+Math.random()*8}s;
+      --delay:${Math.random()*10}s;
+    `;
+    ssContainer.appendChild(ss);
   }
 })();
 
@@ -1486,7 +1565,7 @@ function switchTab(id) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
-  event.currentTarget.classList.add('active');
+  document.querySelector(`.tab-btn[onclick="switchTab('${id}')"]`).classList.add('active');
 }
 
 // ─── Radio styling ───────────────────────────────────
