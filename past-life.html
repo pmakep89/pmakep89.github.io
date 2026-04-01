@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>👻 내 전생은 뭘까? | 오늘의 심테</title>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2846262432607912" crossorigin="anonymous"></script>
+<style>
+  :root { --purple:#7C3AED; --violet:#A855F7; --gold:#F59E0B; --dark:#1A0533; --bg:#0D0020; --card:#1E0845; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans KR',sans-serif; background:var(--bg); min-height:100vh; overflow-x:hidden; color:white; }
+  .stars { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; overflow:hidden; }
+  .star { position:absolute; background:white; border-radius:50%; animation:twinkle linear infinite; }
+  @keyframes twinkle { 0%,100% { opacity:0.2; transform:scale(1); } 50% { opacity:1; transform:scale(1.5); } }
+  .container { position:relative; z-index:1; max-width:480px; margin:0 auto; padding:0 20px 80px; }
+  .ad-banner { background:rgba(124,58,237,0.15); border:1.5px dashed rgba(168,85,247,0.4); border-radius:12px; padding:14px 20px; text-align:center; color:rgba(168,85,247,0.7); margin:16px 0; min-height:80px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; }
+  .ad-label { font-size:0.65rem; letter-spacing:1px; opacity:0.6; }
+  #screen-intro { text-align:center; padding:40px 0; }
+  .intro-orb { font-size:5rem; display:block; animation:float 3s ease-in-out infinite; margin-bottom:20px; filter:drop-shadow(0 0 20px rgba(168,85,247,0.8)); }
+  @keyframes float { 0%,100% { transform:translateY(0) rotate(-5deg); } 50% { transform:translateY(-15px) rotate(5deg); } }
+  .intro-title { font-family:'Gaegu',cursive; font-size:2.2rem; line-height:1.3; margin-bottom:12px; background:linear-gradient(135deg,#C084FC,#F59E0B,#C084FC); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .stats-row { display:flex; gap:8px; justify-content:center; margin-bottom:20px; flex-wrap:wrap; }
+  .stat-badge { background:rgba(124,58,237,0.2); border:1px solid rgba(168,85,247,0.4); border-radius:20px; padding:6px 14px; font-size:0.78rem; color:#C084FC; }
+  .intro-subtitle { font-size:0.92rem; color:rgba(196,181,253,0.8); line-height:1.7; margin-bottom:28px; }
+  .btn-start { background:linear-gradient(135deg,var(--purple),var(--violet)); color:white; border:none; border-radius:50px; padding:18px 48px; font-family:'Gaegu',cursive; font-size:1.3rem; cursor:pointer; box-shadow:0 8px 30px rgba(124,58,237,0.5); transition:all 0.3s; }
+  .btn-start:hover { transform:translateY(-3px) scale(1.04); }
+  .progress-wrap { margin:24px 0 8px; }
+  .progress-info { display:flex; justify-content:space-between; font-size:0.78rem; color:rgba(196,181,253,0.6); margin-bottom:8px; }
+  .progress-bar { height:6px; background:rgba(124,58,237,0.3); border-radius:10px; overflow:hidden; }
+  .progress-fill { height:100%; background:linear-gradient(90deg,var(--purple),var(--gold)); border-radius:10px; transition:width 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+  #screen-question { display:none; }
+  .question-card { background:var(--card); border:1px solid rgba(124,58,237,0.3); border-radius:24px; padding:28px 24px; margin:16px 0; box-shadow:0 8px 32px rgba(124,58,237,0.2); animation:slideUp 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+  @keyframes slideUp { from { opacity:0; transform:translateY(30px) scale(0.97); } to { opacity:1; transform:translateY(0) scale(1); } }
+  .question-num { font-size:0.72rem; color:#C084FC; letter-spacing:1px; margin-bottom:8px; font-weight:600; }
+  .question-emoji { font-size:2.2rem; display:block; margin-bottom:10px; }
+  .question-text { font-size:1.05rem; font-weight:500; color:rgba(255,255,255,0.9); line-height:1.6; margin-bottom:14px; }
+  .question-context { font-size:0.8rem; color:rgba(196,181,253,0.6); background:rgba(124,58,237,0.1); border-radius:10px; padding:10px 14px; margin-bottom:16px; line-height:1.5; }
+  .options { display:flex; flex-direction:column; gap:10px; }
+  .option-btn { background:rgba(124,58,237,0.15); border:1.5px solid rgba(124,58,237,0.3); border-radius:16px; padding:13px 16px; font-family:'Noto Sans KR',sans-serif; font-size:0.88rem; color:rgba(196,181,253,0.9); cursor:pointer; text-align:left; transition:all 0.25s; line-height:1.4; display:flex; align-items:center; gap:10px; }
+  .option-btn .opt-icon { font-size:1.2rem; flex-shrink:0; }
+  .option-btn:hover { background:rgba(124,58,237,0.35); border-color:var(--violet); transform:translateX(6px); color:white; }
+  .option-btn.selected { background:linear-gradient(135deg,var(--purple),var(--violet)); border-color:transparent; color:white; transform:translateX(6px); }
+  #screen-loading { display:none; text-align:center; padding:60px 0; }
+  .loading-orb { font-size:4rem; animation:spin 2s linear infinite; display:block; margin-bottom:20px; filter:drop-shadow(0 0 15px rgba(168,85,247,0.8)); }
+  @keyframes spin { 0% { transform:rotate(0deg) scale(1); } 50% { transform:rotate(180deg) scale(1.2); } 100% { transform:rotate(360deg) scale(1); } }
+  .loading-text { font-family:'Gaegu',cursive; font-size:1.4rem; color:var(--violet); margin-bottom:8px; }
+  .loading-dots span { animation:dot 1.2s infinite; font-size:1.5rem; color:var(--violet); }
+  .loading-dots span:nth-child(2) { animation-delay:0.2s; }
+  .loading-dots span:nth-child(3) { animation-delay:0.4s; }
+  @keyframes dot { 0%,80%,100% { opacity:0.2; transform:scale(0.8); } 40% { opacity:1; transform:scale(1.2); } }
+  #screen-result { display:none; text-align:center; padding:20px 0; animation:slideUp 0.5s ease; }
+  .result-card { background:var(--card); border:1px solid rgba(124,58,237,0.4); border-radius:28px; padding:28px 22px; box-shadow:0 12px 40px rgba(124,58,237,0.25); margin:16px 0; position:relative; overflow:hidden; }
+  .result-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--purple),var(--gold),var(--violet)); }
+  .result-type-label { font-size:0.72rem; color:var(--violet); letter-spacing:2px; margin-bottom:4px; }
+  .result-emoji { font-size:4.5rem; display:block; margin:10px 0; animation:float 3s ease-in-out infinite; filter:drop-shadow(0 0 20px rgba(168,85,247,0.6)); }
+  .result-type { font-family:'Gaegu',cursive; font-size:1.8rem; margin-bottom:4px; background:linear-gradient(135deg,#C084FC,#F59E0B); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .result-subtitle { font-size:0.82rem; color:rgba(196,181,253,0.6); margin-bottom:14px; }
+  .result-desc { font-size:0.88rem; color:rgba(196,181,253,0.85); line-height:1.8; text-align:left; background:rgba(124,58,237,0.15); border:1px solid rgba(124,58,237,0.2); border-radius:16px; padding:16px; margin:14px 0; }
+  .info-box { background:rgba(124,58,237,0.1); border:1px solid rgba(124,58,237,0.25); border-radius:14px; padding:14px; margin:10px 0; text-align:left; }
+  .info-box-title { font-size:0.72rem; color:#C084FC; letter-spacing:1px; margin-bottom:6px; font-weight:600; }
+  .info-box-content { font-size:0.85rem; color:rgba(196,181,253,0.8); line-height:1.6; }
+  .result-tags { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:12px 0; }
+  .tag { background:rgba(124,58,237,0.2); border:1px solid rgba(124,58,237,0.4); border-radius:20px; padding:5px 12px; font-size:0.76rem; color:#C084FC; }
+  .share-card { background:linear-gradient(135deg,var(--purple),var(--violet)); border-radius:18px; padding:18px; margin:14px 0; color:white; }
+  .share-card-title { font-family:'Gaegu',cursive; font-size:1.1rem; margin-bottom:6px; }
+  .share-card-desc { font-size:0.8rem; opacity:0.9; line-height:1.5; }
+  .btn-share { background:linear-gradient(135deg,#25D366,#1ebe5d); color:white; border:none; border-radius:50px; padding:16px 36px; font-family:'Gaegu',cursive; font-size:1.1rem; cursor:pointer; width:100%; margin-bottom:12px; box-shadow:0 6px 20px rgba(37,211,102,0.3); transition:all 0.3s; }
+  .btn-retry { background:transparent; color:var(--violet); border:2px solid var(--violet); border-radius:50px; padding:14px 36px; font-family:'Gaegu',cursive; font-size:1.1rem; cursor:pointer; width:100%; transition:all 0.3s; margin-bottom:12px; }
+  .btn-home { background:transparent; color:rgba(196,181,253,0.5); border:1px solid rgba(124,58,237,0.3); border-radius:50px; padding:12px 36px; font-family:'Gaegu',cursive; font-size:1rem; cursor:pointer; width:100%; text-decoration:none; display:block; text-align:center; }
+  .ad-modal-overlay { display:none; position:fixed; inset:0; background:rgba(10,0,32,0.85); backdrop-filter:blur(6px); z-index:100; align-items:center; justify-content:center; }
+  .ad-modal-overlay.show { display:flex; }
+  .ad-modal { background:var(--card); border:1px solid rgba(124,58,237,0.4); border-radius:24px; padding:28px; max-width:360px; width:90%; text-align:center; animation:popIn 0.4s cubic-bezier(0.34,1.56,0.64,1); box-shadow:0 20px 60px rgba(124,58,237,0.3); }
+  @keyframes popIn { from { opacity:0; transform:scale(0.8); } to { opacity:1; transform:scale(1); } }
+  .ad-timer { font-family:'Gaegu',cursive; font-size:2.5rem; color:var(--gold); font-weight:700; }
+  .btn-ad-close { background:linear-gradient(135deg,var(--purple),var(--violet)); color:white; border:none; border-radius:50px; padding:14px 32px; font-family:'Gaegu',cursive; font-size:1.1rem; cursor:pointer; width:100%; opacity:0.4; transition:all 0.3s; }
+  .btn-ad-close.active { opacity:1; box-shadow:0 6px 20px rgba(124,58,237,0.4); }
+  .screen { display:none; }
+  .screen.active { display:block; }
+  #screen-intro.active { display:block; }
+  footer { text-align:center; padding:20px; font-size:0.75rem; color:rgba(196,181,253,0.3); }
+  footer a { color:rgba(196,181,253,0.3); text-decoration:underline; cursor:pointer; }
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="ad-modal-overlay" id="adModal">
+  <div class="ad-modal">
+    <div style="font-size:2.5rem; margin-bottom:10px;">🔮</div>
+    <div style="font-family:'Gaegu',cursive; font-size:1.3rem; color:white; margin-bottom:6px;">전생의 기운 불러오는 중...</div>
+    <div style="font-size:0.82rem; color:rgba(196,181,253,0.7); margin-bottom:16px; line-height:1.5;">잠시만 기다려주세요 ✨</div>
+    <div style="background:rgba(124,58,237,0.15); border:1.5px dashed rgba(168,85,247,0.4); border-radius:14px; padding:20px; margin-bottom:16px; min-height:120px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;">
+      <div class="ad-label">ADVERTISEMENT</div>
+      <div id="quoteText" style="font-size:0.88rem; color:#C084FC; line-height:1.6; text-align:center; font-style:italic; min-height:48px; transition:opacity 0.5s; padding:0 4px;"></div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div class="ad-timer" id="adTimer">5</div>
+        <div style="font-size:0.78rem; color:rgba(196,181,253,0.6);">초 후 계속하기</div>
+      </div>
+    </div>
+    <button class="btn-ad-close" id="btnAdClose" disabled onclick="closeAd()">계속하기 →</button>
+  </div>
+</div>
+<div class="container">
+  <div id="screen-intro" class="screen active">
+    <div style="height:36px;"></div>
+    <div class="ad-banner"><div class="ad-label">ADVERTISEMENT</div><div style="font-size:0.78rem; opacity:0.5;">광고 영역</div></div>
+    <div style="text-align:center; padding:20px 0 28px;">
+      <span class="intro-orb">🔮</span>
+      <h1 class="intro-title">나의 전생은<br>무엇이었을까?</h1>
+      <div class="stats-row">
+        <span class="stat-badge">🌟 전생 심리학 12문항</span>
+        <span class="stat-badge">⚡ 6가지 전생 유형</span>
+        <span class="stat-badge">⏱️ 약 2분</span>
+      </div>
+      <p class="intro-subtitle">수천 년의 시간을 넘어<br>당신의 <strong style="color:#C084FC;">진짜 전생</strong>이 밝혀집니다 ✨</p>
+      <button class="btn-start" onclick="startTest()">전생 알아보기 🔮</button>
+    </div>
+    <div class="ad-banner"><div class="ad-label">ADVERTISEMENT</div><div style="font-size:0.78rem; opacity:0.5;">광고 영역</div></div>
+    <a href="/" style="display:block; text-align:center; padding:16px 0 0; font-size:0.8rem; color:rgba(196,181,253,0.4); text-decoration:none;">🌸 오늘의 심테 홈으로</a>
+  </div>
+  <div id="screen-question" class="screen">
+    <div style="height:16px;"></div>
+    <div class="progress-wrap">
+      <div class="progress-info"><span id="progressLabel">1 / 12</span><span id="progressPct">8%</span></div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:8%"></div></div>
+    </div>
+    <div class="question-card" id="questionCard">
+      <div class="question-num" id="qNum"></div>
+      <span class="question-emoji" id="qEmoji"></span>
+      <p class="question-text" id="qText"></p>
+      <div class="question-context" id="qContext" style="display:none;"></div>
+      <div class="options" id="qOptions"></div>
+    </div>
+  </div>
+  <div id="screen-loading" class="screen">
+    <div style="height:60px;"></div>
+    <span class="loading-orb">🔮</span>
+    <div class="loading-text">전생 분석 중...</div>
+    <div style="font-size:0.82rem; color:rgba(196,181,253,0.6); margin-top:8px;" id="loadingMsg">수천 년의 기억을 불러오고 있어요</div>
+    <div class="loading-dots" style="margin-top:16px;"><span>●</span><span>●</span><span>●</span></div>
+  </div>
+  <div id="screen-result" class="screen">
+    <div style="height:16px;"></div>
+    <div class="ad-banner"><div class="ad-label">ADVERTISEMENT</div><div style="font-size:0.78rem; opacity:0.5;">광고 영역</div></div>
+    <div class="result-card">
+      <div class="result-type-label">🔮 당신의 전생</div>
+      <span class="result-emoji" id="resultEmoji"></span>
+      <div class="result-type" id="resultType"></div>
+      <div class="result-subtitle" id="resultSubtitle"></div>
+      <div class="result-desc" id="resultDesc"></div>
+      <div class="info-box">
+        <div class="info-box-title">⚡ 전생에서 현생으로 이어진 특징</div>
+        <div class="info-box-content" id="resultTrait"></div>
+      </div>
+      <div class="info-box" style="background:rgba(245,158,11,0.08); border-color:rgba(245,158,11,0.3);">
+        <div class="info-box-title" style="color:#F59E0B;">🌟 이번 생에서의 사명</div>
+        <div class="info-box-content" id="resultMission"></div>
+      </div>
+      <div class="result-tags" id="resultTags"></div>
+    </div>
+    <div class="share-card">
+      <div class="share-card-title">친구한테 공유해봐요! 🔮</div>
+      <div class="share-card-desc">내 전생이 <span id="shareType"></span>이래요!<br>너의 전생은 뭐야? 같이 해봐요 ✨</div>
+    </div>
+    <div class="ad-banner"><div class="ad-label">ADVERTISEMENT</div><div style="font-size:0.78rem; opacity:0.5;">광고 영역</div></div>
+    <button class="btn-share" onclick="shareResult()">💬 카카오톡으로 공유하기</button>
+    <button class="btn-retry" onclick="retryTest()">🔄 다시 테스트하기</button>
+    <a href="/" class="btn-home">🌸 다른 테스트 보러가기</a>
+  </div>
+</div>
+<footer><a onclick="document.getElementById('privacy-modal').style.display='flex'">개인정보처리방침</a></footer>
+<div id="privacy-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:999; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:#1E0845; border:1px solid rgba(124,58,237,0.4); border-radius:20px; padding:28px; max-width:440px; width:100%; max-height:80vh; overflow-y:auto;">
+    <h2 style="font-size:1.1rem; color:#C084FC; margin-bottom:12px;">개인정보처리방침</h2>
+    <div style="font-size:0.82rem; color:rgba(196,181,253,0.8); line-height:1.8;">
+      <p>본 사이트는 회원가입 없이 이용 가능하며 개인 식별 정보를 수집하지 않습니다. Google AdSense 광고 서비스로 인해 쿠키가 수집될 수 있습니다.</p><br>
+      <p>Google 개인정보처리방침: <a href="https://policies.google.com/privacy" target="_blank" style="color:#C084FC;">policies.google.com/privacy</a></p>
+    </div>
+    <button onclick="document.getElementById('privacy-modal').style.display='none'" style="margin-top:16px; background:linear-gradient(135deg,#7C3AED,#A855F7); color:white; border:none; border-radius:50px; padding:12px 28px; font-size:0.9rem; cursor:pointer; width:100%;">닫기</button>
+  </div>
+</div>
+<script>
+const questions=[{emoji:"🌙",num:"Q1. 꿈의 기억",text:"꿈속에서 자주 나타나는 장면이나 공간이 있나요?",context:"💡 반복되는 꿈은 전생의 기억이 남긴 흔적일 수 있어요",options:[{icon:"⚔️",text:"전쟁터나 격렬한 전투 장면",score:1},{icon:"🌊",text:"광활한 바다나 배 위",score:2},{icon:"👑",text:"화려한 궁궐이나 왕좌",score:3},{icon:"🌿",text:"깊은 숲이나 자연 속",score:4},{icon:"📚",text:"도서관이나 연구실 같은 공간",score:5},{icon:"🎭",text:"무대나 공연장 같은 곳",score:6}]},{emoji:"💫",num:"Q2. 데자뷰",text:"처음 가보는 곳인데 이상하게 익숙한 느낌이 든 적 있나요?",context:"💡 데자뷰는 전생의 장소 기억과 연결될 수 있어요",options:[{icon:"🏯",text:"동아시아의 오래된 성이나 궁",score:3},{icon:"🏛️",text:"유럽의 고대 유적지나 성당",score:1},{icon:"🌋",text:"원시적인 자연 환경",score:4},{icon:"🚢",text:"항구나 바다가 보이는 해안",score:2},{icon:"🏫",text:"오래된 학교나 도서관",score:5},{icon:"🎪",text:"극장이나 공연 무대",score:6}]},{emoji:"⚡",num:"Q3. 타고난 재능",text:"특별히 배운 적 없는데 유독 잘하거나 쉽게 느껴지는 것은?",options:[{icon:"🗡️",text:"운동, 격투, 전략적 사고",score:1},{icon:"🧭",text:"방향 감각, 새로운 환경 적응",score:2},{icon:"👥",text:"리더십, 사람 다루는 능력",score:3},{icon:"🌱",text:"동식물 돌보기, 자연과의 교감",score:4},{icon:"📖",text:"빠른 학습, 언어, 분석력",score:5},{icon:"🎨",text:"예술, 음악, 창의적 표현",score:6}]},{emoji:"🎭",num:"Q4. 본능적 반응",text:"갑자기 위기 상황이 닥쳤을 때 나의 첫 번째 반응은?",options:[{icon:"🛡️",text:"몸이 먼저 움직여 앞장선다",score:1},{icon:"🗺️",text:"재빠르게 탈출 경로를 찾는다",score:2},{icon:"📢",text:"주변 사람들을 이끌고 지휘한다",score:3},{icon:"🌳",text:"자연스럽게 숨거나 환경을 이용한다",score:4},{icon:"🧠",text:"냉정하게 상황을 분석하고 판단한다",score:5},{icon:"🎵",text:"목소리나 표현으로 상황을 전환한다",score:6}]},{emoji:"🌟",num:"Q5. 끌리는 시대",text:"역사에서 가장 살고 싶었던 시대는?",options:[{icon:"🏰",text:"중세 유럽 기사 시대",score:1},{icon:"⛵",text:"15~17세기 대항해 시대",score:2},{icon:"👑",text:"동양의 찬란한 왕조 시대",score:3},{icon:"🌿",text:"자연과 함께한 선사 시대",score:4},{icon:"🏛️",text:"고대 그리스·로마 문명 시대",score:5},{icon:"🎪",text:"예술이 꽃핀 르네상스 시대",score:6}]},{emoji:"💎",num:"Q6. 가장 소중한 것",text:"내가 절대로 포기할 수 없는 것은?",options:[{icon:"⚔️",text:"명예와 용기, 정의",score:1},{icon:"🗺️",text:"자유와 모험, 새로운 경험",score:2},{icon:"👑",text:"권력과 영향력, 책임",score:3},{icon:"🌱",text:"자연과 생명, 조화",score:4},{icon:"📚",text:"지식과 진리, 이해",score:5},{icon:"🎨",text:"아름다움과 예술, 감동",score:6}]},{emoji:"😤",num:"Q7. 가장 큰 두려움",text:"나를 가장 불편하게 만드는 상황은?",options:[{icon:"🏳️",text:"패배하거나 굴복하는 상황",score:1},{icon:"⚓",text:"한 곳에 갇혀 꼼짝 못하는 상황",score:2},{icon:"👤",text:"권위나 권력을 잃는 상황",score:3},{icon:"🏙️",text:"자연과 완전히 단절된 상황",score:4},{icon:"🙊",text:"무지하거나 이해받지 못하는 상황",score:5},{icon:"🎭",text:"창의성이 억압되는 상황",score:6}]},{emoji:"🌙",num:"Q8. 나의 죽음 상상",text:"만약 전생이 있다면 어떻게 생을 마감했을 것 같나요?",options:[{icon:"⚔️",text:"전쟁터에서 장렬히 싸우다가",score:1},{icon:"🌊",text:"망망대해 위에서 평화롭게",score:2},{icon:"🛏️",text:"왕좌에 앉아 노년에 편안하게",score:3},{icon:"🌿",text:"자연 속에서 고요하게",score:4},{icon:"📖",text:"연구와 학문에 헌신하다가",score:5},{icon:"🎵",text:"마지막 공연을 마치고",score:6}]},{emoji:"✨",num:"Q9. 현생에서의 나",text:"사람들이 나를 볼 때 가장 많이 하는 말은?",options:[{icon:"💪",text:"믿음직하고 용감해 보인다",score:1},{icon:"🌊",text:"자유롭고 얽매이지 않는다",score:2},{icon:"👑",text:"카리스마 있고 존재감이 강하다",score:3},{icon:"🌿",text:"따뜻하고 자연스럽다",score:4},{icon:"🧠",text:"똑똑하고 분석적이다",score:5},{icon:"✨",text:"독특하고 예술적이다",score:6}]},{emoji:"🔮",num:"Q10. 직관",text:"처음 만난 사람에 대해 어떻게 판단하나요?",options:[{icon:"⚡",text:"몸짓이나 눈빛에서 강함을 읽는다",score:1},{icon:"🧭",text:"상대방의 의도나 목적을 재빨리 파악한다",score:2},{icon:"👁️",text:"힘의 구조와 영향력을 먼저 본다",score:3},{icon:"🌱",text:"에너지와 감정을 자연스럽게 느낀다",score:4},{icon:"💡",text:"말의 논리와 지식 수준을 살핀다",score:5},{icon:"🎭",text:"감성과 창의성을 직감으로 느낀다",score:6}]},{emoji:"🌍",num:"Q11. 세상을 보는 눈",text:"세상에서 가장 중요한 것은 무엇이라고 생각하나요?",options:[{icon:"⚔️",text:"정의와 질서, 강한 자가 약한 자를 지키는 것",score:1},{icon:"🌊",text:"자유와 탐험, 미지의 세계를 개척하는 것",score:2},{icon:"👑",text:"조화와 번영, 좋은 리더가 세상을 이끄는 것",score:3},{icon:"🌿",text:"균형과 공존, 자연과 인간이 함께 사는 것",score:4},{icon:"📚",text:"발전과 진리, 지식이 세상을 바꾸는 것",score:5},{icon:"🎨",text:"감동과 아름다움, 예술이 영혼을 치유하는 것",score:6}]},{emoji:"🔮",num:"Q12. 마지막 질문",text:"이 테스트를 하면서 어떤 이미지나 느낌이 가장 강하게 떠올랐나요?",context:"💡 강하게 끌리는 이미지는 전생의 흔적일 수 있어요!",options:[{icon:"⚔️",text:"갑옷, 검, 전쟁터, 말 달리는 느낌",score:1},{icon:"🌊",text:"바다, 파도, 넓은 하늘, 자유로운 느낌",score:2},{icon:"👑",text:"왕관, 보좌, 수많은 사람들, 웅장한 느낌",score:3},{icon:"🌿",text:"숲, 동물, 흙냄새, 고요하고 원초적인 느낌",score:4},{icon:"📜",text:"양피지, 촛불, 책, 지식의 향기 같은 느낌",score:5},{icon:"🎭",text:"무대, 음악, 색채, 환호 소리 같은 느낌",score:6}]}];
+const results=[{id:1,emoji:"⚔️",type:"중세 기사",subtitle:"명예를 목숨보다 소중히 여긴 전사",desc:"당신의 전생은 명예와 용기로 살았던 중세 기사였어요! 강인한 의지와 불굴의 정신으로 전장을 누볐던 당신은 약자를 보호하고 정의를 위해 목숨을 바쳤어요. 패배보다 불명예를 더 두려워했던 당신은 이번 생에도 그 기운이 남아 강한 정의감과 책임감을 가지고 있어요. 한번 맡은 일은 끝까지 해내는 불굴의 의지가 바로 전생의 기사 정신이에요 ⚔️",trait:"강한 정의감, 책임감, 한 번 결심하면 절대 포기하지 않는 끈기, 약자를 보호하려는 본능적 충동",mission:"이번 생에서는 무력이 아닌 지혜로 정의를 실현하세요. 당신의 강인함으로 주변 사람들을 지키는 수호자가 될 수 있어요!",tags:["#중세기사","#명예의화신","#불굴의의지","#수호자본능","#정의감폭발"]},{id:2,emoji:"⛵",type:"대항해 시대 탐험가",subtitle:"미지의 세계를 향해 항해한 모험가",desc:"당신의 전생은 아무도 가보지 않은 땅을 향해 항해했던 대담한 탐험가였어요! 넓은 바다와 별을 보며 새로운 세계를 발견하는 것이 삶의 이유였던 당신은 자유롭고 모험을 사랑하는 영혼이에요. 지금도 새로운 것에 대한 호기심이 넘치고, 한 곳에 오래 머물면 답답함을 느끼는 건 전생의 탐험가 DNA 때문이에요 🌊",trait:"왕성한 호기심, 빠른 환경 적응력, 방향 감각, 새로운 것을 두려워하지 않는 용기, 자유를 향한 본능",mission:"이번 생에서는 새로운 아이디어와 가능성을 탐험하세요. 당신은 남들이 가지 않은 길을 개척하는 선구자가 될 운명이에요!",tags:["#대항해탐험가","#자유로운영혼","#모험가기질","#개척자","#새로운세계를향해"]},{id:3,emoji:"👑",type:"동양의 황제",subtitle:"수많은 백성을 이끌었던 통치자",desc:"당신의 전생은 광대한 제국을 다스렸던 왕이나 황제였어요! 막강한 권력과 동시에 무거운 책임감을 짊어지고 나라를 다스렸던 당신은 타고난 리더십이 있어요. 지금도 사람들이 자연스럽게 당신을 중심으로 모이거나, 중요한 결정에서 당신의 의견을 구하는 건 전생의 황제 기운이 남아있기 때문이에요 👑",trait:"자연스러운 카리스마, 큰 그림을 보는 능력, 사람을 이끄는 리더십, 결단력, 존재감만으로도 분위기를 압도하는 힘",mission:"이번 생에서는 권력이 아닌 영감으로 사람들을 이끄세요. 당신의 카리스마로 주변 사람들에게 긍정적인 변화를 만들 수 있어요!",tags:["#전생황제","#타고난리더","#카리스마폭발","#왕의기운","#존재감甲"]},{id:4,emoji:"🌿",type:"자연 속 샤먼",subtitle:"자연과 하나가 된 영적 치유자",desc:"당신의 전생은 자연과 대화하고 부족을 지켜왔던 샤먼이었어요! 동물과 교감하고 자연의 섭리를 읽어내며 치유의 능력을 가졌던 당신은 깊은 영적 감수성을 지니고 있어요. 지금도 자연 속에서 유독 편안함을 느끼거나, 동물들이 당신에게 쉽게 다가오는 건 전생 샤먼의 흔적이에요 🌿",trait:"뛰어난 감수성과 공감 능력, 동물과의 친밀감, 자연 속에서의 편안함, 치유하고 싶은 본능적 욕구",mission:"이번 생에서는 치유자로서의 역할을 찾아보세요. 당신의 따뜻한 에너지로 상처받은 사람들의 마음을 어루만질 수 있어요!",tags:["#전생샤먼","#자연의아이","#영적감수성","#치유자본능","#동물과친구"]},{id:5,emoji:"📚",type:"고대 학자/철학자",subtitle:"진리를 추구했던 지식의 수호자",desc:"당신의 전생은 끝없이 지식을 탐구했던 학자나 철학자였어요! 아테네 아카데미에서 제자들을 가르쳤을 수도, 동양의 유학자로 세상의 이치를 연구했을 수도 있어요. 진리를 향한 끝없는 호기심과 깊은 사색이 당신의 본질이에요. 지금도 왜? 라는 질문을 멈추지 못하는 건 전생 학자의 DNA가 살아있기 때문이에요 📚",trait:"뛰어난 분석력과 논리적 사고, 왕성한 지적 호기심, 빠른 학습 능력, 깊이 있게 생각하는 습관",mission:"이번 생에서는 당신이 쌓은 지식을 세상과 나누세요. 당신의 통찰력으로 사람들의 생각을 바꾸고 세상을 더 나은 곳으로 만들 수 있어요!",tags:["#전생철학자","#지식의수호자","#분석력甲","#왜를멈추지못함","#고대학자"]},{id:6,emoji:"🎭",type:"르네상스 예술가",subtitle:"아름다움으로 세상을 바꾼 창조자",desc:"당신의 전생은 불멸의 작품을 남긴 예술가나 음악가였어요! 다빈치처럼 다방면에 재능을 발휘했을 수도, 모차르트처럼 음악으로 시대를 초월했을 수도 있어요. 아름다움을 창조하고 감동을 전하는 것이 삶의 목적이었던 당신은 지금도 예술적 감수성이 넘쳐요. 평범한 것에서도 아름다움을 발견하는 당신의 눈은 전생 예술가의 선물이에요 🎨",trait:"풍부한 예술적 감수성, 독창적인 시각, 아름다움을 발견하는 능력, 감정을 창의적으로 표현하는 재능",mission:"이번 생에서는 창조하는 것을 두려워하지 마세요. 당신의 예술적 재능으로 사람들의 마음에 감동을 줄 수 있어요!",tags:["#르네상스예술가","#창조자본능","#예술적영혼","#아름다움발견자","#전생화가"]}];
+let currentQ=0,scores={1:0,2:0,3:0,4:0,5:0,6:0},adCallback=null,adInterval=null;
+function createStars(){const c=document.getElementById('stars');for(let i=0;i<80;i++){const s=document.createElement('div');s.className='star';const size=Math.random()*3+1;s.style.cssText=`width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${2+Math.random()*4}s;animation-delay:${Math.random()*4}s;`;c.appendChild(s);}}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>{s.classList.remove('active');s.style.display='none';});const el=document.getElementById(id);el.classList.add('active');el.style.display='block';window.scrollTo({top:0,behavior:'smooth'});}
+function startTest(){currentQ=0;scores={1:0,2:0,3:0,4:0,5:0,6:0};showScreen('screen-question');renderQuestion();}
+function renderQuestion(){const q=questions[currentQ];document.getElementById('qNum').textContent=q.num;document.getElementById('qEmoji').textContent=q.emoji;document.getElementById('qText').textContent=q.text;const ctx=document.getElementById('qContext');if(q.context){ctx.textContent=q.context;ctx.style.display='block';}else{ctx.style.display='none';}const pct=Math.round(((currentQ+1)/questions.length)*100);document.getElementById('progressLabel').textContent=`${currentQ+1} / ${questions.length}`;document.getElementById('progressPct').textContent=pct+'%';document.getElementById('progressFill').style.width=pct+'%';const o=document.getElementById('qOptions');o.innerHTML='';q.options.forEach(opt=>{const btn=document.createElement('button');btn.className='option-btn';btn.innerHTML=`<span class="opt-icon">${opt.icon}</span><span>${opt.text}</span>`;btn.onclick=()=>selectOption(opt.score,btn);o.appendChild(btn);});const card=document.getElementById('questionCard');card.style.animation='none';card.offsetHeight;card.style.animation='slideUp 0.4s cubic-bezier(0.34,1.56,0.64,1)';}
+function selectOption(score,btn){document.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');scores[score]++;setTimeout(()=>{currentQ++;if(currentQ>=questions.length){showLoading();}else if(currentQ===4||currentQ===8){showAd(()=>renderQuestion());}else{renderQuestion();}},400);}
+const pastQuotes=["🔮 전생의 기억은 사라지지 않아요.\n당신의 본능과 직관 속에 살아있어요","✨ 우리가 만나는 모든 인연은\n전생부터 이어진 소중한 연결이에요","🌟 지금 당신이 잘하는 것들은\n수천 년의 연습이 쌓인 결과예요","💫 전생의 지혜가 이번 생을 빛나게 해요.\n당신 안의 가능성을 믿어보세요","🌙 반복되는 꿈, 익숙한 낯선 곳,\n그것이 전생이 당신에게 보내는 신호예요","⭐ 이번 생은 전생보다 더 멋진\n새로운 챕터의 시작이에요","🔥 당신의 영혼은 수천 년을 살아온\n강인하고 아름다운 존재예요","🌸 전생의 당신과 지금의 당신,\n모두 충분히 대단해요"];
+function showAd(callback){adCallback=callback;const modal=document.getElementById('adModal');const timer=document.getElementById('adTimer');const closeBtn=document.getElementById('btnAdClose');const quoteEl=document.getElementById('quoteText');modal.classList.add('show');closeBtn.disabled=true;closeBtn.classList.remove('active');let count=5;timer.textContent=count;const qIdx=Math.floor(Math.random()*pastQuotes.length);quoteEl.style.opacity='0';setTimeout(()=>{quoteEl.textContent=pastQuotes[qIdx];quoteEl.style.opacity='1';},200);adInterval=setInterval(()=>{count--;timer.textContent=count;if(count<=0){clearInterval(adInterval);closeBtn.disabled=false;closeBtn.classList.add('active');}},1000);}
+function closeAd(){document.getElementById('adModal').classList.remove('show');clearInterval(adInterval);if(adCallback){adCallback();adCallback=null;}}
+const loadingMsgs=['전생 기억 불러오는 중...','시간의 강을 거슬러 올라가는 중...','수천 년의 기억 탐색 중...','당신의 전생이 밝혀지고 있어요...'];let loadingIdx=0;
+function showLoading(){showScreen('screen-loading');loadingIdx=0;const interval=setInterval(()=>{document.getElementById('loadingMsg').textContent=loadingMsgs[loadingIdx%loadingMsgs.length];loadingIdx++;},600);setTimeout(()=>{clearInterval(interval);showResult();},2500);}
+function showResult(){const maxScore=Math.max(...Object.values(scores));const topTypes=Object.keys(scores).filter(k=>scores[k]===maxScore);const topId=parseInt(topTypes[Math.floor(Math.random()*topTypes.length)]);const type=results.find(r=>r.id===topId)||results[0];document.getElementById('resultEmoji').textContent=type.emoji;document.getElementById('resultType').textContent=type.type;document.getElementById('resultSubtitle').textContent=type.subtitle;document.getElementById('resultDesc').textContent=type.desc;document.getElementById('resultTrait').textContent=type.trait;document.getElementById('resultMission').textContent=type.mission;document.getElementById('shareType').textContent=type.type;const tagsEl=document.getElementById('resultTags');tagsEl.innerHTML=type.tags.map(t=>`<span class="tag">${t}</span>`).join('');showScreen('screen-result');}
+function shareResult(){const type=document.getElementById('resultType').textContent;const text=`내 전생 테스트 결과: ${type} 🔮\n너의 전생은 뭐야? 같이 해봐! 👉 ${window.location.href}`;if(navigator.share){navigator.share({title:'전생 테스트',text,url:window.location.href});}else{navigator.clipboard.writeText(text).then(()=>alert('링크 복사됐어요! 카톡에 붙여넣기 하세요 ✨'));}}
+function retryTest(){startTest();}
+createStars();
+</script>
+</body>
+</html>

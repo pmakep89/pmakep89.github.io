@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌸 나의 연애세포 깨우기 테스트 | 오늘의 심테</title>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2846262432607912" crossorigin="anonymous"></script>
+<style>
+  :root { --pink:#FF6B9D; --peach:#FFB347; --lavender:#C8A8E9; --cream:#FFF5F0; --dark:#2D1B2E; --soft-pink:#FFE4EF; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans KR',sans-serif; background:var(--cream); min-height:100vh; overflow-x:hidden; }
+  .petals { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; overflow:hidden; }
+  .petal { position:absolute; top:-40px; animation:fall linear infinite; opacity:0.5; }
+  @keyframes fall { 0% { transform:translateY(-40px) rotate(0deg); opacity:0.7; } 100% { transform:translateY(110vh) rotate(360deg) translateX(20px); opacity:0; } }
+  .container { position:relative; z-index:1; max-width:480px; margin:0 auto; padding:0 20px 80px; }
+  .ad-banner { background:linear-gradient(135deg,#f8f0ff,#fff0f5); border:1.5px dashed #ddb0cc; border-radius:12px; padding:14px 20px; text-align:center; color:#b08090; margin:16px 0; min-height:80px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; }
+  .ad-label { font-size:0.65rem; color:#cca0b0; text-transform:uppercase; letter-spacing:1px; }
+  #screen-intro { text-align:center; padding:40px 0; }
+  .intro-emoji { font-size:5rem; display:block; animation:bounce 2s ease-in-out infinite; margin-bottom:20px; }
+  @keyframes bounce { 0%,100% { transform:translateY(0) rotate(-5deg); } 50% { transform:translateY(-12px) rotate(5deg); } }
+  .intro-title { font-family:'Gaegu',cursive; font-size:2.2rem; color:var(--dark); line-height:1.3; margin-bottom:12px; }
+  .intro-title span { color:var(--pink); }
+  .stats-row { display:flex; gap:8px; justify-content:center; margin-bottom:20px; flex-wrap:wrap; }
+  .stat-badge { background:white; border:1.5px solid #ffb0cc; border-radius:20px; padding:6px 14px; font-size:0.78rem; color:var(--pink); }
+  .intro-subtitle { font-size:0.92rem; color:#9a7080; line-height:1.7; margin-bottom:28px; }
+  .btn-start { background:linear-gradient(135deg,var(--pink),#ff8fb5); color:white; border:none; border-radius:50px; padding:18px 48px; font-family:'Gaegu',cursive; font-size:1.3rem; cursor:pointer; box-shadow:0 8px 24px rgba(255,107,157,0.35); transition:all 0.3s; }
+  .btn-start:hover { transform:translateY(-3px) scale(1.04); }
+  .progress-wrap { margin:24px 0 8px; }
+  .progress-info { display:flex; justify-content:space-between; font-size:0.78rem; color:#b090a0; margin-bottom:8px; }
+  .progress-bar { height:8px; background:#ffd6e7; border-radius:10px; overflow:hidden; }
+  .progress-fill { height:100%; background:linear-gradient(90deg,var(--pink),var(--peach)); border-radius:10px; transition:width 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+  #screen-question { display:none; }
+  .question-card { background:white; border-radius:24px; padding:28px 24px; margin:16px 0; box-shadow:0 8px 32px rgba(255,107,157,0.1); animation:slideUp 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+  @keyframes slideUp { from { opacity:0; transform:translateY(30px) scale(0.97); } to { opacity:1; transform:translateY(0) scale(1); } }
+  .question-num { font-size:0.72rem; color:var(--pink); letter-spacing:1px; margin-bottom:8px; font-weight:600; }
+  .question-emoji { font-size:2.2rem; display:block; margin-bottom:10px; }
+  .question-text { font-size:1.05rem; font-weight:500; color:var(--dark); line-height:1.6; margin-bottom:14px; }
+  .question-context { font-size:0.8rem; color:#b090a0; background:#fff5f0; border-radius:10px; padding:10px 14px; margin-bottom:16px; line-height:1.5; }
+  .options { display:flex; flex-direction:column; gap:10px; }
+  .option-btn { background:var(--soft-pink); border:2px solid transparent; border-radius:16px; padding:13px 16px; font-family:'Noto Sans KR',sans-serif; font-size:0.88rem; color:#5a3040; cursor:pointer; text-align:left; transition:all 0.25s; line-height:1.4; display:flex; align-items:center; gap:10px; }
+  .option-btn .opt-icon { font-size:1.2rem; flex-shrink:0; }
+  .option-btn:hover { background:white; border-color:var(--pink); transform:translateX(6px); box-shadow:0 4px 16px rgba(255,107,157,0.2); }
+  .option-btn.selected { background:linear-gradient(135deg,var(--pink),#ff8fb5); color:white; border-color:transparent; transform:translateX(6px); }
+  #screen-loading { display:none; text-align:center; padding:60px 0; }
+  .loading-heart { font-size:4rem; animation:heartbeat 0.8s ease-in-out infinite; display:block; margin-bottom:20px; }
+  @keyframes heartbeat { 0%,100% { transform:scale(1); } 50% { transform:scale(1.2); } }
+  .loading-text { font-family:'Gaegu',cursive; font-size:1.4rem; color:var(--pink); margin-bottom:8px; }
+  .loading-dots span { animation:dot 1.2s infinite; font-size:1.5rem; color:var(--pink); }
+  .loading-dots span:nth-child(2) { animation-delay:0.2s; }
+  .loading-dots span:nth-child(3) { animation-delay:0.4s; }
+  @keyframes dot { 0%,80%,100% { opacity:0.2; transform:scale(0.8); } 40% { opacity:1; transform:scale(1.2); } }
+  #screen-result { display:none; text-align:center; padding:20px 0; animation:slideUp 0.5s ease; }
+  .result-card { background:white; border-radius:28px; padding:28px 22px; box-shadow:0 12px 40px rgba(255,107,157,0.15); margin:16px 0; position:relative; overflow:hidden; }
+  .result-card::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--pink),var(--peach),var(--lavender)); }
+  .result-percent { font-family:'Gaegu',cursive; font-size:4.5rem; color:var(--pink); line-height:1; margin:8px 0; text-shadow:0 4px 12px rgba(255,107,157,0.3); }
+  .result-type-label { font-size:0.72rem; color:#b090a0; letter-spacing:2px; margin-bottom:4px; }
+  .result-emoji { font-size:4rem; display:block; margin:8px 0; animation:bounce 2s ease-in-out infinite; }
+  .result-type { font-family:'Gaegu',cursive; font-size:1.8rem; color:var(--dark); margin-bottom:4px; }
+  .result-type span { color:var(--pink); }
+  .result-subtitle { font-size:0.82rem; color:#b090a0; margin-bottom:14px; }
+  .gauge-wrap { margin:14px 0; }
+  .gauge-label { display:flex; justify-content:space-between; font-size:0.75rem; color:#9a7080; margin-bottom:6px; }
+  .gauge-bar { height:10px; background:#ffd6e7; border-radius:10px; overflow:hidden; }
+  .gauge-fill { height:100%; background:linear-gradient(90deg,var(--pink),var(--peach)); border-radius:10px; transition:width 1.5s cubic-bezier(0.34,1.56,0.64,1); width:0%; }
+  .result-desc { font-size:0.88rem; color:#7a5060; line-height:1.8; text-align:left; background:var(--soft-pink); border-radius:16px; padding:16px; margin:14px 0; }
+  .info-box { background:linear-gradient(135deg,#fff0f8,#f8f0ff); border:1.5px solid #ffb0cc; border-radius:14px; padding:14px; margin:10px 0; text-align:left; }
+  .info-box-title { font-size:0.72rem; color:var(--pink); letter-spacing:1px; margin-bottom:6px; font-weight:600; }
+  .info-box-content { font-size:0.85rem; color:#5a3040; line-height:1.6; }
+  .result-tags { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:12px 0; }
+  .tag { background:linear-gradient(135deg,#ffe4ef,#fff0f5); border:1px solid #ffb0cc; border-radius:20px; padding:5px 12px; font-size:0.76rem; color:var(--pink); }
+  .share-card { background:linear-gradient(135deg,var(--pink),#ff8fb5); border-radius:18px; padding:18px; margin:14px 0; color:white; }
+  .share-card-title { font-family:'Gaegu',cursive; font-size:1.1rem; margin-bottom:6px; }
+  .share-card-desc { font-size:0.8rem; opacity:0.9; line-height:1.5; }
+  .btn-share { background:linear-gradient(135deg,#25D366,#1ebe5d); color:white; border:none; border-radius:50px; padding:16px 36px; font-family:'Gaegu',cursive; font-size:1.1rem; cursor:pointer; width:100%; margin-bottom:12px; box-shadow:0 6px 20px rgba(37,211,102,0.3); transition:all 0.3s; }
+  .btn-retry { background:white; color:var(--pink); border:2px solid var(--pink); border-radius:50px; padding:14px 36px; font-family:'Gaegu',cursive; font-size:1.1rem; cursor:pointer; width:100%; transition:all 0.3s; margin-bottom:12px; }
+  .btn-home { background:transparent; color:#b090a0; border:1px solid #ddb0cc; border-radius:50px; padding:12px 36px; font-family:'Gaegu',cursive; font-size:1rem; cursor:pointer; width:100%; text-decoration:none; display:block; text-align:center; }
+  .ad-modal-overlay { display:none; position:fixed; inset:0; background:rgba(45,27,46,0.6); backdrop-filter:blur(4px); z-index:100; align-items:center; justify-content:center; }
+  .ad-modal-overlay.show { display:flex; }
+  .ad-modal { background:white; border-radius:24px; padding:28px; max-width:360px; width:90%; text-align:center; animation:popIn 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+  @keyframes popIn { from { opacity:0; transform:scale(0.8); } to { opacity:1; transform:scale(1); } }
+  .ad-timer { font-family:'Gaegu',cursive; font-size:2.5rem; color:var(--pink); font-weight:700; }
+  .btn-ad-close { background:linear-gradient(135deg,var(--pink),#ff8fb5); color:white; border:none; border-radius:50px; padding:14px 32px; font-family:'Gaegu',cursive; font-size:1.1rem; cursor:pointer; width:100%; opacity:0.4; transition:all 0.3s; }
+  .btn-ad-close.active { opacity:1; box-shadow:0 6px 20px rgba(255,107,157,0.35); }
+  .screen { display:none; }
+  .screen.active { display:block; }
+  #screen-intro.active { display:block; }
+  footer { text-align:center; padding:20px; font-size:0.75rem; color:#c0a0b0; }
+  footer a { color:#c0a0b0; text-decoration:underline; cursor:pointer; }
+</style>
+</head>
+<body>
+<div class="petals" id="petals"></div>
+<div class="ad-modal-overlay" id="adModal">
+  <div class="ad-modal">
+    <div style="font-size:2.5rem; margin-bottom:10px;">🌸</div>
+    <div style="font-family:'Gaegu',cursive; font-size:1.3rem; color:#2D1B2E; margin-bottom:6px;">봄 소식 전달 중!</div>
+    <div style="font-size:0.82rem; color:#9a7080; margin-bottom:16px; line-height:1.5;">잠깐 광고를 봐주세요 💕</div>
+    <div style="background:linear-gradient(135deg,#fff5f0,#ffe4ef); border:2px dashed #ffb0cc; border-radius:14px; padding:20px; margin-bottom:16px; min-height:120px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;">
+      <div class="ad-label">ADVERTISEMENT</div>
+      <div id="quoteText" style="font-size:0.88rem; color:#a06080; line-height:1.6; text-align:center; font-style:italic; min-height:48px; transition:opacity 0.5s; padding:0 4px;"></div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div class="ad-timer" id="adTimer">5</div>
+        <div style="font-size:0.78rem; color:#b090a0;">초 후 계속하기</div>
+      </div>
+    </div>
+    <button class="btn-ad-close" id="btnAdClose" disabled onclick="closeAd()">계속하기 →</button>
+  </div>
+</div>
+<div class="container">
+  <div id="screen-intro" class="screen active">
+    <div style="height:36px;"></div>
+    <div class="ad-banner"><div class="ad-label">ADVERTISEMENT</div><div style="font-size:0.78rem; color:#c0a0b0;">광고 영역</div></div>
+    <div style="text-align:center; padding:20px 0 28px;">
+      <span class="intro-emoji">🌸</span>
+      <h1 class="intro-title">나의 <span>연애세포</span><br>깨어났을까?</h1>
+      <div class="stats-row">
+        <span class="stat-badge">💬 심리학 기반 12문항</span>
+        <span class="stat-badge">💕 6가지 유형</span>
+        <span class="stat-badge">⏱️ 약 2분</span>
+      </div>
+      <p class="intro-subtitle">연애 심리학에서 검증된 질문들로<br>당신의 <strong style="color:var(--pink);">진짜 연애 준비도</strong>를 알아봐요 🌷</p>
+      <button class="btn-start" onclick="startTest()">테스트 시작하기 🌸</button>
+    </div>
+    <div class="ad-banner"><div class="ad-label">ADVERTISEMENT</div><div style="font-size:0.78rem; color:#c0a0b0;">광고 영역</div></div>
+  </div>
+  <div id="screen-question" class="screen">
+    <div style="height:16px;"></div>
+    <div class="progress-wrap">
+      <div class="progress-info"><span id="progressLabel">1 / 12</span><span id="progressPct">8%</span></div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:8%"></div></div>
+    </div>
+    <div class="question-card" id="questionCard">
+      <div class="question-num" id="qNum"></div>
+      <span class="question-emoji" id="qEmoji"></span>
+      <p class="question-text" id="qText"></p>
+      <div class="question-context" id="qContext" style="display:none;"></div>
+      <div class="options" id="qOptions"></div>
+    </div>
+  </div>
+  <div id="screen-loading" class="screen">
+    <div style="height:60px;"></div>
+    <span class="loading-heart">💗</span>
+    <div class="loading-text">연애세포 분석 중...</div>
+    <div style="font-size:0.82rem; color:#b090a0; margin-top:8px;" id="loadingMsg">당신의 설렘 지수를 계산하고 있어요</div>
+    <div class="loading-dots" style="margin-top:16px;"><span>●</span><span>●</span><span>●</span></div>
+  </div>
+  <div id="screen-result" class="screen">
+    <div style="height:16px;"></div>
+    <div class="ad-banner"><div class="ad-label">ADVERTISEMENT</div><div style="font-size:0.78rem; color:#c0a0b0;">광고 영역</div></div>
+    <div class="result-card">
+      <div class="result-type-label">🌸 나의 연애세포 깨어남 지수</div>
+      <div class="result-percent" id="resultPercent"></div>
+      <span class="result-emoji" id="resultEmoji"></span>
+      <div class="result-type" id="resultType"></div>
+      <div class="result-subtitle" id="resultSubtitle"></div>
+      <div class="gauge-wrap">
+        <div class="gauge-label"><span>😴 겨울잠</span><span>💘 활짝 깨어남</span></div>
+        <div class="gauge-bar"><div class="gauge-fill" id="gaugeFill"></div></div>
+      </div>
+      <div class="result-desc" id="resultDesc"></div>
+      <div class="info-box">
+        <div class="info-box-title">💕 나와 잘 맞는 연애 상대</div>
+        <div class="info-box-content" id="resultPartner"></div>
+      </div>
+      <div class="info-box" style="background:linear-gradient(135deg,#f0fff8,#f0f8ff); border-color:#a0d8c0;">
+        <div class="info-box-title" style="color:#2a9d8f;">⚠️ 연애할 때 주의할 점</div>
+        <div class="info-box-content" id="resultWarning"></div>
+      </div>
+      <div class="result-tags" id="resultTags"></div>
+    </div>
+    <div class="share-card">
+      <div class="share-card-title">친구한테 공유해봐요! 🌸</div>
+      <div class="share-card-desc">나의 연애세포 지수가 <span id="sharePercent"></span>%래요!<br>너는 몇 %야? 같이 해봐요 💕</div>
+    </div>
+    <div class="ad-banner"><div class="ad-label">ADVERTISEMENT</div><div style="font-size:0.78rem; color:#c0a0b0;">광고 영역</div></div>
+    <button class="btn-share" onclick="shareResult()">💬 카카오톡으로 공유하기</button>
+    <button class="btn-retry" onclick="retryTest()">🔄 다시 테스트하기</button>
+    <a href="/" class="btn-home">🌟 다른 테스트 보러가기</a>
+  </div>
+</div>
+<footer><a onclick="document.getElementById('privacy-modal').style.display='flex'">개인정보처리방침</a></footer>
+<div id="privacy-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:999; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:white; border-radius:20px; padding:28px; max-width:440px; width:100%; max-height:80vh; overflow-y:auto;">
+    <h2 style="font-size:1.1rem; color:#FF6B9D; margin-bottom:12px;">개인정보처리방침</h2>
+    <div style="font-size:0.82rem; color:#5a3040; line-height:1.8;">
+      <p>본 사이트는 회원가입 없이 이용 가능하며 개인 식별 정보를 수집하지 않습니다. Google AdSense 광고 서비스로 인해 쿠키가 수집될 수 있습니다.</p><br>
+      <p>Google 개인정보처리방침: <a href="https://policies.google.com/privacy" target="_blank" style="color:#FF6B9D;">policies.google.com/privacy</a></p>
+    </div>
+    <button onclick="document.getElementById('privacy-modal').style.display='none'" style="margin-top:16px; background:linear-gradient(135deg,#FF6B9D,#ff8fb5); color:white; border:none; border-radius:50px; padding:12px 28px; font-size:0.9rem; cursor:pointer; width:100%;">닫기</button>
+  </div>
+</div>
+<script>
+const questions=[{emoji:"💄",num:"Q1. 자기인식",text:"요즘 거울을 볼 때 어떤 생각이 드나요?",context:"💡 자기 매력 인식은 연애 준비도의 핵심 지표예요",options:[{icon:"😍",text:"오늘도 괜찮은데? 나 좋아",score:5},{icon:"😊",text:"그냥 그렇지 뭐, 평범해",score:3},{icon:"😐",text:"딱히 관심 없어, 그냥 지나침",score:2},{icon:"😞",text:"요즘 좀 자신감이 없는 것 같아",score:1}]},{emoji:"📱",num:"Q2. 관심 표현",text:"마음에 드는 사람이 생겼을 때 나는?",context:"💡 감정 표현 방식은 연애 스타일을 결정해요",options:[{icon:"💌",text:"먼저 연락하고 적극적으로 표현함",score:5},{icon:"👀",text:"티는 안 내지만 은근히 챙겨줌",score:4},{icon:"🤔",text:"상대방 반응 살피면서 눈치 게임",score:3},{icon:"🙈",text:"혼자 좋아하다가 그냥 묻어버림",score:1}]},{emoji:"💔",num:"Q3. 과거 정리",text:"전 연인을 생각하면 어떤 기분이 드나요?",context:"💡 과거 관계 정리는 새로운 연애의 준비도를 나타내요",options:[{icon:"😌",text:"이미 다 잊었어, 추억이지 뭐",score:5},{icon:"🙂",text:"가끔 생각나지만 그리워하진 않아",score:4},{icon:"😔",text:"아직 좀 마음에 걸려",score:2},{icon:"❓",text:"전 연인이 없어서 모르겠어",score:4}]},{emoji:"🌙",num:"Q4. 외로움 감지",text:"밤에 혼자 누워 있을 때 가장 많이 드는 생각은?",context:"💡 외로움 인식은 연애 동기와 직결돼요",options:[{icon:"💕",text:"누군가 옆에 있으면 좋겠다",score:5},{icon:"📱",text:"SNS 보다가 자는 편이야",score:3},{icon:"😴",text:"그냥 빨리 자야지 생각함",score:2},{icon:"🤯",text:"내일 할 일 걱정하느라 바빠",score:1}]},{emoji:"☕",num:"Q5. 설렘 감수성",text:"카페에서 우연히 눈이 마주친 매력적인 이성, 어떻게 반응해요?",context:"💡 설렘 반응 속도는 연애세포 활성화 지표예요",options:[{icon:"💓",text:"심장이 두근! 웃어줬어",score:5},{icon:"😳",text:"순간 당황해서 바로 시선 피함",score:3},{icon:"😏",text:"자연스럽게 기회 만들어봄",score:5},{icon:"😑",text:"그냥 내 커피만 마심",score:1}]},{emoji:"🎬",num:"Q6. 감정 공명",text:"로맨스 영화/드라마를 볼 때 나는?",context:"💡 감정이입 능력은 연애 감수성의 핵심이에요",options:[{icon:"😭",text:"완전 몰입해서 같이 울고 웃음",score:5},{icon:"🥰",text:"주인공 커플이 부러워짐",score:4},{icon:"😐",text:"그냥 콘텐츠로 봄, 감정 없음",score:2},{icon:"📱",text:"보다가 딴짓하게 됨",score:1}]},{emoji:"🌹",num:"Q7. 표현 욕구",text:"꽃집 앞을 지나다 예쁜 꽃을 봤어요. 어떤 생각이 드나요?",options:[{icon:"💐",text:"저 꽃 누군가에게 주고 싶다",score:5},{icon:"🤳",text:"사진 찍어서 인스타에 올려야지",score:2},{icon:"🥰",text:"누군가 나한테 주면 좋겠다",score:4},{icon:"🏃",text:"그냥 지나침, 별생각 없음",score:1}]},{emoji:"📅",num:"Q8. 미래 계획",text:"1년 뒤의 내 모습을 상상했을 때 연애는?",context:"💡 미래 연애 계획은 현재 준비도를 보여줘요",options:[{icon:"💑",text:"좋은 사람과 함께 있을 것 같아",score:5},{icon:"🤷",text:"모르겠어, 흘러가는 대로",score:3},{icon:"💼",text:"지금은 일/공부가 더 중요해",score:1},{icon:"🌱",text:"나 자신이 더 성장하고 싶어",score:2}]},{emoji:"💬",num:"Q9. 소통 스타일",text:"좋아하는 사람과 대화할 때 나는?",options:[{icon:"😄",text:"평소보다 더 재밌고 활발해짐",score:5},{icon:"😅",text:"긴장해서 말이 잘 안 나와",score:3},{icon:"🎯",text:"자연스럽게 내 매력을 어필함",score:5},{icon:"😶",text:"평소랑 똑같이 행동함",score:2}]},{emoji:"🎵",num:"Q10. 감성 지수",text:"플레이리스트에서 달달한 사랑 노래가 흘러나왔어요",options:[{icon:"🎶",text:"볼륨 올리고 완전 감성에 빠짐",score:5},{icon:"😊",text:"흥얼거리면서 기분 좋아짐",score:4},{icon:"😴",text:"그냥 배경음악으로 흘려들음",score:2},{icon:"⏭️",text:"빠르게 스킵! 내 취향 아님",score:1}]},{emoji:"🤝",num:"Q11. 관계 투자",text:"좋아하는 사람을 위해 어느 정도까지 노력할 수 있어요?",options:[{icon:"🔥",text:"뭐든 할 수 있어, 최선을 다함",score:5},{icon:"💪",text:"내 선에서 최대한 노력함",score:4},{icon:"⚖️",text:"상대방이 노력한 만큼만 함",score:3},{icon:"😴",text:"솔직히 크게 노력하기 싫어",score:1}]},{emoji:"🔮",num:"Q12. 마지막 질문",text:"지금 이 테스트를 하면서 머릿속에 떠오른 사람이 있나요?",context:"💡 특정 인물을 연상하는 것은 연애세포 활성화의 신호예요!",options:[{icon:"💗",text:"응! 얼굴 바로 떠오르는 사람 있어",score:5},{icon:"🤔",text:"잠깐 스친 사람은 있는 것 같은데",score:4},{icon:"😅",text:"딱히 없는 것 같은데..?",score:2},{icon:"🙅",text:"전혀 없음! 완전 솔로 마인드",score:1}]}];
+const results=[{min:90,max:100,percent:98,emoji:"🔥",type:"연애세포 폭발형",subtitle:"지금 당장 연애해도 될 것 같은데요?",desc:"연애세포가 완전히 활짝 깨어난 상태예요! 감정 표현도 자연스럽고 설렘을 느끼는 능력도 최고치예요. 지금 이 순간 누군가를 만난다면 정말 멋진 연애를 할 수 있을 것 같아요. 따뜻하고 적극적인 에너지가 넘쳐흘러서 주변 사람들도 당신의 매력을 분명히 느끼고 있을 거예요. 망설이지 말고 먼저 다가가보세요! 지금이 바로 그 타이밍이에요 💕",partner:"나만큼 감정 표현이 풍부하고 적극적인 사람이 잘 맞아요. 단, 너무 빠르게 달려가다 지칠 수 있으니 비슷한 온도의 사람을 찾아보세요!",warning:"감정이 너무 앞서 상대방을 압도할 수 있어요. 상대방의 속도도 맞춰주는 여유를 가져보세요 💪",tags:["#연애준비완료","#설렘폭발","#봄의주인공","#적극적인당신","#지금당장연애해"]},{min:75,max:89,percent:82,emoji:"🌸",type:"봄바람 설렘형",subtitle:"연애할 준비가 거의 다 됐어요!",desc:"연애세포가 활짝 피어나고 있어요! 감정의 온도가 따뜻하게 올라와 있고, 누군가를 만날 준비가 80% 이상 되어 있어요. 봄바람처럼 자연스럽게 감정이 흘러나오는 당신은 상대방에게도 편안하고 좋은 느낌을 줄 거예요. 조금만 더 용기를 내면 멋진 인연이 시작될 것 같아요 🌷",partner:"나보다 약간 더 리드해주는 적극적인 사람이 잘 맞아요. 내 감정을 잘 읽어주고 편안하게 만들어주는 사람을 만나보세요!",warning:"감정은 있는데 행동으로 옮기는 것이 조금 느릴 수 있어요. 완벽한 타이밍을 기다리다 기회를 놓칠 수 있으니 조금 더 과감해져 보세요!",tags:["#설렘준비중","#봄꽃같은마음","#인연이오고있어","#조금만더용기"]},{min:58,max:74,percent:65,emoji:"🌷",type:"봄꽃 몽글몽글형",subtitle:"마음 한켠에서 설렘이 피어오르고 있어요",desc:"아직 완전히 활짝 피진 않았지만, 마음 속 어딘가에서 누군가를 원하는 감정이 조금씩 피어오르고 있어요. 연애에 대한 감수성은 충분히 있지만 아직 행동으로 옮기기엔 망설임이 있는 상태예요. 봄꽃처럼 때가 되면 자연스럽게 피어날 거예요 🌸",partner:"나의 감정을 재촉하지 않고 기다려줄 인내심 있는 사람이 필요해요. 처음에 부담 없이 친구처럼 시작할 수 있는 관계가 좋아요!",warning:"기회가 왔을 때 너무 오래 고민하다 놓칠 수 있어요. 완벽한 확신이 올 때까지 기다리기보다 조금씩 마음을 열어가는 연습을 해보세요!",tags:["#서서히피어나는중","#봄꽃준비완료","#천천히가도좋아","#몽글몽글한마음"]},{min:42,max:57,percent:48,emoji:"🍃",type:"이른봄 새싹형",subtitle:"봄이 온 건 알지만 아직 이불 속이 더 좋아요",desc:"연애에 대한 관심은 있지만 실제로 행동하기엔 아직 준비가 덜 된 상태예요. 새싹처럼 조금씩 자라나고 있는 중이에요! 지금은 나를 충전하는 시간이 필요할 수도 있어요. 무리하게 연애를 시작하기보다 내가 진정으로 원하는 게 뭔지 천천히 생각해보세요 🌱",partner:"나에게 관심을 갖되 부담주지 않는 사람이 좋아요. 먼저 좋은 친구 관계에서 자연스럽게 발전할 수 있는 인연을 찾아보세요!",warning:"연애에 대한 두려움이나 귀찮음이 좋은 기회를 막을 수 있어요. 완벽한 상황이 갖춰질 때를 기다리기보다 조금씩 열린 마음을 가져보세요!",tags:["#충전중","#나에게집중","#새싹처럼자라나는중","#서두르지않아도돼"]},{min:28,max:41,percent:32,emoji:"❄️",type:"겨울잠 완전형",subtitle:"연애세포가 깊은 잠에 빠져있어요",desc:"지금은 연애보다 다른 것들이 더 중요하거나, 혼자만의 시간이 더 편한 시기인 것 같아요. 이건 나쁜 게 아니에요! 자신을 충전하고 성장시키는 지금 이 시간도 나중에 훨씬 더 좋은 연애를 위한 준비 과정이 될 거예요. 봄은 매년 찾아오니까, 나만의 봄도 반드시 올 거예요 ☃️",partner:"지금 당장 연애를 서두르기보다, 비슷하게 자기 자신에게 집중하고 있는 사람을 자연스럽게 만나게 될 거예요. 억지로 찾지 않아도 때가 되면 나타날 거예요!",warning:"너무 오랫동안 연애를 회피하다 보면 감정 표현이 더 어려워질 수 있어요. 아주 작은 것부터, 예를 들어 새로운 사람에게 먼저 인사하는 것부터 시작해보세요!",tags:["#혼자가편해","#자유로운영혼","#내봄은언젠가","#겨울잠의달인"]},{min:0,max:27,percent:12,emoji:"🌑",type:"연애세포 hibernation",subtitle:"지금은 나 자신에게 완전히 집중하는 시기예요",desc:"연애에 대한 관심이 거의 없는 상태예요. 지금은 자신의 꿈, 커리어, 취미에 완전히 몰두하고 있거나, 잠시 감정적인 휴식이 필요한 시기일 수 있어요. 이런 시기도 인생에서 반드시 필요해요! 내 안을 충분히 채우고 나면 그때 자연스럽게 다른 사람을 받아들일 공간이 생길 거예요 🌙",partner:"지금은 연애보다 나 자신을 먼저 만나는 시간이에요. 내가 충분히 성장했을 때, 그때의 나와 잘 맞는 사람이 분명히 나타날 거예요!",warning:"혼자가 편한 것과 연애를 두려워하는 것은 달라요. 내 감정을 솔직하게 들여다보고, 혹시 상처나 트라우마가 있다면 그것부터 치유해보는 건 어떨까요?",tags:["#나에게집중","#성장의시간","#연애는나중에","#내면의힘충전중"]}];
+let currentQ=0,totalScore=0,adCallback=null,adInterval=null;
+function createPetals(){const c=document.getElementById('petals');const e=['🌸','🌺','🌷','💮','🌼','🍃'];for(let i=0;i<18;i++){const p=document.createElement('div');p.className='petal';p.textContent=e[Math.floor(Math.random()*e.length)];p.style.left=Math.random()*100+'%';p.style.animationDuration=(5+Math.random()*7)+'s';p.style.animationDelay=(Math.random()*10)+'s';p.style.fontSize=(0.8+Math.random()*1.2)+'rem';c.appendChild(p);}}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>{s.classList.remove('active');s.style.display='none';});const el=document.getElementById(id);el.classList.add('active');el.style.display='block';window.scrollTo({top:0,behavior:'smooth'});}
+function startTest(){currentQ=0;totalScore=0;showScreen('screen-question');renderQuestion();}
+function renderQuestion(){const q=questions[currentQ];document.getElementById('qNum').textContent=q.num;document.getElementById('qEmoji').textContent=q.emoji;document.getElementById('qText').textContent=q.text;const ctx=document.getElementById('qContext');if(q.context){ctx.textContent=q.context;ctx.style.display='block';}else{ctx.style.display='none';}const pct=Math.round(((currentQ+1)/questions.length)*100);document.getElementById('progressLabel').textContent=`${currentQ+1} / ${questions.length}`;document.getElementById('progressPct').textContent=pct+'%';document.getElementById('progressFill').style.width=pct+'%';const o=document.getElementById('qOptions');o.innerHTML='';q.options.forEach(opt=>{const btn=document.createElement('button');btn.className='option-btn';btn.innerHTML=`<span class="opt-icon">${opt.icon}</span><span>${opt.text}</span>`;btn.onclick=()=>selectOption(opt.score,btn);o.appendChild(btn);});const card=document.getElementById('questionCard');card.style.animation='none';card.offsetHeight;card.style.animation='slideUp 0.4s cubic-bezier(0.34,1.56,0.64,1)';}
+function selectOption(score,btn){document.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');totalScore+=score;setTimeout(()=>{currentQ++;if(currentQ>=questions.length){showLoading();}else if(currentQ===4||currentQ===8){showAd(()=>renderQuestion());}else{renderQuestion();}},400);}
+const loveQuotes=["💕 사랑은 두 사람이 서로를 바라보는 것이 아니라,\n함께 같은 방향을 바라보는 것이에요","🌸 봄이 오면 꽃이 피듯,\n당신에게도 설레는 인연이 찾아올 거예요","✨ 좋은 사람은 찾는 게 아니라\n내가 좋은 사람이 되면 나타나요","💌 진심은 반드시 전해져요.\n용기 내어 마음을 표현해보세요","🌹 사랑받기 위해 태어난 당신,\n지금 이 순간도 충분히 사랑스러워요","🦋 설렘은 인생을 살아있게 만드는\n가장 달콤한 감정이에요","💗 당신을 가장 많이 사랑해야 할 사람은\n바로 당신 자신이에요","🌟 완벽한 타이밍은 없어요.\n지금이 바로 그 순간이에요"];
+function showAd(callback){adCallback=callback;const modal=document.getElementById('adModal');const timer=document.getElementById('adTimer');const closeBtn=document.getElementById('btnAdClose');const quoteEl=document.getElementById('quoteText');modal.classList.add('show');closeBtn.disabled=true;closeBtn.classList.remove('active');let count=5;timer.textContent=count;const qIdx=Math.floor(Math.random()*loveQuotes.length);quoteEl.style.opacity='0';setTimeout(()=>{quoteEl.textContent=loveQuotes[qIdx];quoteEl.style.opacity='1';},200);adInterval=setInterval(()=>{count--;timer.textContent=count;if(count<=0){clearInterval(adInterval);closeBtn.disabled=false;closeBtn.classList.add('active');}},1000);}
+function closeAd(){document.getElementById('adModal').classList.remove('show');clearInterval(adInterval);if(adCallback){adCallback();adCallback=null;}}
+const loadingMsgs=['연애세포 깨우는 중...','설렘 지수 계산 중...','심장 두근거림 측정 중...','봄 감성 충전 중...'];let loadingIdx=0;
+function showLoading(){showScreen('screen-loading');loadingIdx=0;const interval=setInterval(()=>{document.getElementById('loadingMsg').textContent=loadingMsgs[loadingIdx%loadingMsgs.length];loadingIdx++;},600);setTimeout(()=>{clearInterval(interval);showResult();},2500);}
+function showResult(){const maxScore=questions.length*5;const pct=Math.round((totalScore/maxScore)*100);const type=results.find(r=>pct>=r.min&&pct<=r.max)||results[results.length-1];document.getElementById('resultPercent').textContent=pct+'%';document.getElementById('resultEmoji').textContent=type.emoji;document.getElementById('resultType').innerHTML=`<span>${type.type}</span>`;document.getElementById('resultSubtitle').textContent=type.subtitle;document.getElementById('resultDesc').textContent=type.desc;document.getElementById('resultPartner').textContent=type.partner;document.getElementById('resultWarning').textContent=type.warning;document.getElementById('sharePercent').textContent=pct;const tagsEl=document.getElementById('resultTags');tagsEl.innerHTML=type.tags.map(t=>`<span class="tag">${t}</span>`).join('');showScreen('screen-result');setTimeout(()=>{document.getElementById('gaugeFill').style.width=pct+'%';},300);}
+function shareResult(){const pct=document.getElementById('resultPercent').textContent;const type=document.getElementById('resultType').textContent;const text=`나의 연애세포 깨어남 지수: ${pct} (${type}) 🌸\n너는 몇 %야? 같이 해봐! 👉 ${window.location.href}`;if(navigator.share){navigator.share({title:'연애세포 테스트',text,url:window.location.href});}else{navigator.clipboard.writeText(text).then(()=>alert('링크 복사됐어요! 카톡에 붙여넣기 하세요 💕'));}}
+function retryTest(){startTest();}
+createPetals();
+</script>
+</body>
+</html>
