@@ -195,6 +195,9 @@
   }
   .form-row select option { background: var(--bg2); }
   .form-row input::placeholder { color: #4a5568; }
+  .date-select-wrap { display:flex; gap:6px; }
+  .date-sel { flex:1; background:rgba(255,255,255,0.05); border:1px solid rgba(196,181,253,0.2); border-radius:10px; color:white; padding:10px 6px; font-size:0.85rem; font-family:'Noto Sans KR',sans-serif; cursor:pointer; }
+  .date-sel option { background:#1a0533; color:white; }
 
   .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
   @media(max-width:400px) { .form-grid { grid-template-columns:1fr; } }
@@ -365,26 +368,27 @@
     display:none;
     background: var(--card2);
     border:1px solid rgba(201,168,76,0.2);
-    border-radius:16px; padding:24px;
+    border-radius:20px; padding:28px;
     margin-top:16px;
     animation: fadeIn 0.5s ease;
   }
   .result-card.show { display:block; }
   .result-card-header {
     display:flex; align-items:center; gap:10px;
-    margin-bottom:18px;
-    padding-bottom:14px;
+    margin-bottom:20px;
+    padding-bottom:16px;
     border-bottom:1px solid var(--border);
   }
-  .result-icon { font-size:1.5rem; }
+  .result-icon { font-size:1.8rem; }
   .result-card-title {
     font-family:'Noto Serif KR', serif;
-    font-size:1rem; font-weight:600; color:var(--accent2);
+    font-size:1.1rem; font-weight:600; color:var(--accent2);
   }
   .result-content {
-    font-family:'Noto Serif KR', serif;
-    font-size:0.88rem; line-height:2;
+    font-family:'Noto Sans KR', sans-serif;
+    font-size:0.95rem; line-height:2.2;
     color:var(--text); white-space:pre-wrap;
+    word-break:keep-all;
   }
 
   /* Section divider label */
@@ -482,7 +486,125 @@
       </div>
       <div class="form-row">
         <label>생년월일</label>
-        <input type="date" id="saju-date">
+        <div class="date-select-wrap">
+          <select class="date-sel" id="saju-date-year"><option value="">년도</option>
+          <option value="1940">1940년</option>
+          <option value="1941">1941년</option>
+          <option value="1942">1942년</option>
+          <option value="1943">1943년</option>
+          <option value="1944">1944년</option>
+          <option value="1945">1945년</option>
+          <option value="1946">1946년</option>
+          <option value="1947">1947년</option>
+          <option value="1948">1948년</option>
+          <option value="1949">1949년</option>
+          <option value="1950">1950년</option>
+          <option value="1951">1951년</option>
+          <option value="1952">1952년</option>
+          <option value="1953">1953년</option>
+          <option value="1954">1954년</option>
+          <option value="1955">1955년</option>
+          <option value="1956">1956년</option>
+          <option value="1957">1957년</option>
+          <option value="1958">1958년</option>
+          <option value="1959">1959년</option>
+          <option value="1960">1960년</option>
+          <option value="1961">1961년</option>
+          <option value="1962">1962년</option>
+          <option value="1963">1963년</option>
+          <option value="1964">1964년</option>
+          <option value="1965">1965년</option>
+          <option value="1966">1966년</option>
+          <option value="1967">1967년</option>
+          <option value="1968">1968년</option>
+          <option value="1969">1969년</option>
+          <option value="1970">1970년</option>
+          <option value="1971">1971년</option>
+          <option value="1972">1972년</option>
+          <option value="1973">1973년</option>
+          <option value="1974">1974년</option>
+          <option value="1975">1975년</option>
+          <option value="1976">1976년</option>
+          <option value="1977">1977년</option>
+          <option value="1978">1978년</option>
+          <option value="1979">1979년</option>
+          <option value="1980">1980년</option>
+          <option value="1981">1981년</option>
+          <option value="1982">1982년</option>
+          <option value="1983">1983년</option>
+          <option value="1984">1984년</option>
+          <option value="1985">1985년</option>
+          <option value="1986">1986년</option>
+          <option value="1987">1987년</option>
+          <option value="1988">1988년</option>
+          <option value="1989">1989년</option>
+          <option value="1990">1990년</option>
+          <option value="1991">1991년</option>
+          <option value="1992">1992년</option>
+          <option value="1993">1993년</option>
+          <option value="1994">1994년</option>
+          <option value="1995">1995년</option>
+          <option value="1996">1996년</option>
+          <option value="1997">1997년</option>
+          <option value="1998">1998년</option>
+          <option value="1999">1999년</option>
+          <option value="2000">2000년</option>
+          <option value="2001">2001년</option>
+          <option value="2002">2002년</option>
+          <option value="2003">2003년</option>
+          <option value="2004">2004년</option>
+          <option value="2005">2005년</option>
+          <option value="2006">2006년</option>
+          <option value="2007">2007년</option>
+          <option value="2008">2008년</option>
+          <option value="2009">2009년</option>
+          <option value="2010">2010년</option></select>
+          <select class="date-sel" id="saju-date-month"><option value="">월</option>
+          <option value="01">1월</option>
+          <option value="02">2월</option>
+          <option value="03">3월</option>
+          <option value="04">4월</option>
+          <option value="05">5월</option>
+          <option value="06">6월</option>
+          <option value="07">7월</option>
+          <option value="08">8월</option>
+          <option value="09">9월</option>
+          <option value="10">10월</option>
+          <option value="11">11월</option>
+          <option value="12">12월</option></select>
+          <select class="date-sel" id="saju-date-day"><option value="">일</option>
+          <option value="01">1일</option>
+          <option value="02">2일</option>
+          <option value="03">3일</option>
+          <option value="04">4일</option>
+          <option value="05">5일</option>
+          <option value="06">6일</option>
+          <option value="07">7일</option>
+          <option value="08">8일</option>
+          <option value="09">9일</option>
+          <option value="10">10일</option>
+          <option value="11">11일</option>
+          <option value="12">12일</option>
+          <option value="13">13일</option>
+          <option value="14">14일</option>
+          <option value="15">15일</option>
+          <option value="16">16일</option>
+          <option value="17">17일</option>
+          <option value="18">18일</option>
+          <option value="19">19일</option>
+          <option value="20">20일</option>
+          <option value="21">21일</option>
+          <option value="22">22일</option>
+          <option value="23">23일</option>
+          <option value="24">24일</option>
+          <option value="25">25일</option>
+          <option value="26">26일</option>
+          <option value="27">27일</option>
+          <option value="28">28일</option>
+          <option value="29">29일</option>
+          <option value="30">30일</option>
+          <option value="31">31일</option></select>
+        </div>
       </div>
       <div class="form-row">
         <label>태어난 시간 (선택)</label>
@@ -534,7 +656,125 @@
       </div>
       <div class="form-row">
         <label>생년월일 (선택 — 더 정확한 풀이)</label>
-        <input type="date" id="sm-date">
+        <div class="date-select-wrap">
+          <select class="date-sel" id="sm-date-year"><option value="">년도</option>
+          <option value="1940">1940년</option>
+          <option value="1941">1941년</option>
+          <option value="1942">1942년</option>
+          <option value="1943">1943년</option>
+          <option value="1944">1944년</option>
+          <option value="1945">1945년</option>
+          <option value="1946">1946년</option>
+          <option value="1947">1947년</option>
+          <option value="1948">1948년</option>
+          <option value="1949">1949년</option>
+          <option value="1950">1950년</option>
+          <option value="1951">1951년</option>
+          <option value="1952">1952년</option>
+          <option value="1953">1953년</option>
+          <option value="1954">1954년</option>
+          <option value="1955">1955년</option>
+          <option value="1956">1956년</option>
+          <option value="1957">1957년</option>
+          <option value="1958">1958년</option>
+          <option value="1959">1959년</option>
+          <option value="1960">1960년</option>
+          <option value="1961">1961년</option>
+          <option value="1962">1962년</option>
+          <option value="1963">1963년</option>
+          <option value="1964">1964년</option>
+          <option value="1965">1965년</option>
+          <option value="1966">1966년</option>
+          <option value="1967">1967년</option>
+          <option value="1968">1968년</option>
+          <option value="1969">1969년</option>
+          <option value="1970">1970년</option>
+          <option value="1971">1971년</option>
+          <option value="1972">1972년</option>
+          <option value="1973">1973년</option>
+          <option value="1974">1974년</option>
+          <option value="1975">1975년</option>
+          <option value="1976">1976년</option>
+          <option value="1977">1977년</option>
+          <option value="1978">1978년</option>
+          <option value="1979">1979년</option>
+          <option value="1980">1980년</option>
+          <option value="1981">1981년</option>
+          <option value="1982">1982년</option>
+          <option value="1983">1983년</option>
+          <option value="1984">1984년</option>
+          <option value="1985">1985년</option>
+          <option value="1986">1986년</option>
+          <option value="1987">1987년</option>
+          <option value="1988">1988년</option>
+          <option value="1989">1989년</option>
+          <option value="1990">1990년</option>
+          <option value="1991">1991년</option>
+          <option value="1992">1992년</option>
+          <option value="1993">1993년</option>
+          <option value="1994">1994년</option>
+          <option value="1995">1995년</option>
+          <option value="1996">1996년</option>
+          <option value="1997">1997년</option>
+          <option value="1998">1998년</option>
+          <option value="1999">1999년</option>
+          <option value="2000">2000년</option>
+          <option value="2001">2001년</option>
+          <option value="2002">2002년</option>
+          <option value="2003">2003년</option>
+          <option value="2004">2004년</option>
+          <option value="2005">2005년</option>
+          <option value="2006">2006년</option>
+          <option value="2007">2007년</option>
+          <option value="2008">2008년</option>
+          <option value="2009">2009년</option>
+          <option value="2010">2010년</option></select>
+          <select class="date-sel" id="sm-date-month"><option value="">월</option>
+          <option value="01">1월</option>
+          <option value="02">2월</option>
+          <option value="03">3월</option>
+          <option value="04">4월</option>
+          <option value="05">5월</option>
+          <option value="06">6월</option>
+          <option value="07">7월</option>
+          <option value="08">8월</option>
+          <option value="09">9월</option>
+          <option value="10">10월</option>
+          <option value="11">11월</option>
+          <option value="12">12월</option></select>
+          <select class="date-sel" id="sm-date-day"><option value="">일</option>
+          <option value="01">1일</option>
+          <option value="02">2일</option>
+          <option value="03">3일</option>
+          <option value="04">4일</option>
+          <option value="05">5일</option>
+          <option value="06">6일</option>
+          <option value="07">7일</option>
+          <option value="08">8일</option>
+          <option value="09">9일</option>
+          <option value="10">10일</option>
+          <option value="11">11일</option>
+          <option value="12">12일</option>
+          <option value="13">13일</option>
+          <option value="14">14일</option>
+          <option value="15">15일</option>
+          <option value="16">16일</option>
+          <option value="17">17일</option>
+          <option value="18">18일</option>
+          <option value="19">19일</option>
+          <option value="20">20일</option>
+          <option value="21">21일</option>
+          <option value="22">22일</option>
+          <option value="23">23일</option>
+          <option value="24">24일</option>
+          <option value="25">25일</option>
+          <option value="26">26일</option>
+          <option value="27">27일</option>
+          <option value="28">28일</option>
+          <option value="29">29일</option>
+          <option value="30">30일</option>
+          <option value="31">31일</option></select>
+        </div>
       </div>
       <button class="btn-divine" onclick="submitForm('sungmyung')">✦ 이름 풀이 보기 ✦</button>
     </div>
@@ -555,7 +795,125 @@
         <div>
           <div class="section-label">나</div>
           <div class="form-row"><label>이름</label><input type="text" id="gh-name1" placeholder="내 이름"></div>
-          <div class="form-row"><label>생년월일</label><input type="date" id="gh-date1"></div>
+          <div class="form-row"><label>생년월일</label><div class="date-select-wrap">
+          <select class="date-sel" id="gh-date1-year"><option value="">년도</option>
+          <option value="1940">1940년</option>
+          <option value="1941">1941년</option>
+          <option value="1942">1942년</option>
+          <option value="1943">1943년</option>
+          <option value="1944">1944년</option>
+          <option value="1945">1945년</option>
+          <option value="1946">1946년</option>
+          <option value="1947">1947년</option>
+          <option value="1948">1948년</option>
+          <option value="1949">1949년</option>
+          <option value="1950">1950년</option>
+          <option value="1951">1951년</option>
+          <option value="1952">1952년</option>
+          <option value="1953">1953년</option>
+          <option value="1954">1954년</option>
+          <option value="1955">1955년</option>
+          <option value="1956">1956년</option>
+          <option value="1957">1957년</option>
+          <option value="1958">1958년</option>
+          <option value="1959">1959년</option>
+          <option value="1960">1960년</option>
+          <option value="1961">1961년</option>
+          <option value="1962">1962년</option>
+          <option value="1963">1963년</option>
+          <option value="1964">1964년</option>
+          <option value="1965">1965년</option>
+          <option value="1966">1966년</option>
+          <option value="1967">1967년</option>
+          <option value="1968">1968년</option>
+          <option value="1969">1969년</option>
+          <option value="1970">1970년</option>
+          <option value="1971">1971년</option>
+          <option value="1972">1972년</option>
+          <option value="1973">1973년</option>
+          <option value="1974">1974년</option>
+          <option value="1975">1975년</option>
+          <option value="1976">1976년</option>
+          <option value="1977">1977년</option>
+          <option value="1978">1978년</option>
+          <option value="1979">1979년</option>
+          <option value="1980">1980년</option>
+          <option value="1981">1981년</option>
+          <option value="1982">1982년</option>
+          <option value="1983">1983년</option>
+          <option value="1984">1984년</option>
+          <option value="1985">1985년</option>
+          <option value="1986">1986년</option>
+          <option value="1987">1987년</option>
+          <option value="1988">1988년</option>
+          <option value="1989">1989년</option>
+          <option value="1990">1990년</option>
+          <option value="1991">1991년</option>
+          <option value="1992">1992년</option>
+          <option value="1993">1993년</option>
+          <option value="1994">1994년</option>
+          <option value="1995">1995년</option>
+          <option value="1996">1996년</option>
+          <option value="1997">1997년</option>
+          <option value="1998">1998년</option>
+          <option value="1999">1999년</option>
+          <option value="2000">2000년</option>
+          <option value="2001">2001년</option>
+          <option value="2002">2002년</option>
+          <option value="2003">2003년</option>
+          <option value="2004">2004년</option>
+          <option value="2005">2005년</option>
+          <option value="2006">2006년</option>
+          <option value="2007">2007년</option>
+          <option value="2008">2008년</option>
+          <option value="2009">2009년</option>
+          <option value="2010">2010년</option></select>
+          <select class="date-sel" id="gh-date1-month"><option value="">월</option>
+          <option value="01">1월</option>
+          <option value="02">2월</option>
+          <option value="03">3월</option>
+          <option value="04">4월</option>
+          <option value="05">5월</option>
+          <option value="06">6월</option>
+          <option value="07">7월</option>
+          <option value="08">8월</option>
+          <option value="09">9월</option>
+          <option value="10">10월</option>
+          <option value="11">11월</option>
+          <option value="12">12월</option></select>
+          <select class="date-sel" id="gh-date1-day"><option value="">일</option>
+          <option value="01">1일</option>
+          <option value="02">2일</option>
+          <option value="03">3일</option>
+          <option value="04">4일</option>
+          <option value="05">5일</option>
+          <option value="06">6일</option>
+          <option value="07">7일</option>
+          <option value="08">8일</option>
+          <option value="09">9일</option>
+          <option value="10">10일</option>
+          <option value="11">11일</option>
+          <option value="12">12일</option>
+          <option value="13">13일</option>
+          <option value="14">14일</option>
+          <option value="15">15일</option>
+          <option value="16">16일</option>
+          <option value="17">17일</option>
+          <option value="18">18일</option>
+          <option value="19">19일</option>
+          <option value="20">20일</option>
+          <option value="21">21일</option>
+          <option value="22">22일</option>
+          <option value="23">23일</option>
+          <option value="24">24일</option>
+          <option value="25">25일</option>
+          <option value="26">26일</option>
+          <option value="27">27일</option>
+          <option value="28">28일</option>
+          <option value="29">29일</option>
+          <option value="30">30일</option>
+          <option value="31">31일</option></select>
+        </div></div>
           <div class="form-row">
             <label>성별</label>
             <div class="radio-group">
@@ -572,7 +930,125 @@
         <div>
           <div class="section-label">상대방</div>
           <div class="form-row"><label>이름</label><input type="text" id="gh-name2" placeholder="상대방 이름"></div>
-          <div class="form-row"><label>생년월일</label><input type="date" id="gh-date2"></div>
+          <div class="form-row"><label>생년월일</label><div class="date-select-wrap">
+          <select class="date-sel" id="gh-date2-year"><option value="">년도</option>
+          <option value="1940">1940년</option>
+          <option value="1941">1941년</option>
+          <option value="1942">1942년</option>
+          <option value="1943">1943년</option>
+          <option value="1944">1944년</option>
+          <option value="1945">1945년</option>
+          <option value="1946">1946년</option>
+          <option value="1947">1947년</option>
+          <option value="1948">1948년</option>
+          <option value="1949">1949년</option>
+          <option value="1950">1950년</option>
+          <option value="1951">1951년</option>
+          <option value="1952">1952년</option>
+          <option value="1953">1953년</option>
+          <option value="1954">1954년</option>
+          <option value="1955">1955년</option>
+          <option value="1956">1956년</option>
+          <option value="1957">1957년</option>
+          <option value="1958">1958년</option>
+          <option value="1959">1959년</option>
+          <option value="1960">1960년</option>
+          <option value="1961">1961년</option>
+          <option value="1962">1962년</option>
+          <option value="1963">1963년</option>
+          <option value="1964">1964년</option>
+          <option value="1965">1965년</option>
+          <option value="1966">1966년</option>
+          <option value="1967">1967년</option>
+          <option value="1968">1968년</option>
+          <option value="1969">1969년</option>
+          <option value="1970">1970년</option>
+          <option value="1971">1971년</option>
+          <option value="1972">1972년</option>
+          <option value="1973">1973년</option>
+          <option value="1974">1974년</option>
+          <option value="1975">1975년</option>
+          <option value="1976">1976년</option>
+          <option value="1977">1977년</option>
+          <option value="1978">1978년</option>
+          <option value="1979">1979년</option>
+          <option value="1980">1980년</option>
+          <option value="1981">1981년</option>
+          <option value="1982">1982년</option>
+          <option value="1983">1983년</option>
+          <option value="1984">1984년</option>
+          <option value="1985">1985년</option>
+          <option value="1986">1986년</option>
+          <option value="1987">1987년</option>
+          <option value="1988">1988년</option>
+          <option value="1989">1989년</option>
+          <option value="1990">1990년</option>
+          <option value="1991">1991년</option>
+          <option value="1992">1992년</option>
+          <option value="1993">1993년</option>
+          <option value="1994">1994년</option>
+          <option value="1995">1995년</option>
+          <option value="1996">1996년</option>
+          <option value="1997">1997년</option>
+          <option value="1998">1998년</option>
+          <option value="1999">1999년</option>
+          <option value="2000">2000년</option>
+          <option value="2001">2001년</option>
+          <option value="2002">2002년</option>
+          <option value="2003">2003년</option>
+          <option value="2004">2004년</option>
+          <option value="2005">2005년</option>
+          <option value="2006">2006년</option>
+          <option value="2007">2007년</option>
+          <option value="2008">2008년</option>
+          <option value="2009">2009년</option>
+          <option value="2010">2010년</option></select>
+          <select class="date-sel" id="gh-date2-month"><option value="">월</option>
+          <option value="01">1월</option>
+          <option value="02">2월</option>
+          <option value="03">3월</option>
+          <option value="04">4월</option>
+          <option value="05">5월</option>
+          <option value="06">6월</option>
+          <option value="07">7월</option>
+          <option value="08">8월</option>
+          <option value="09">9월</option>
+          <option value="10">10월</option>
+          <option value="11">11월</option>
+          <option value="12">12월</option></select>
+          <select class="date-sel" id="gh-date2-day"><option value="">일</option>
+          <option value="01">1일</option>
+          <option value="02">2일</option>
+          <option value="03">3일</option>
+          <option value="04">4일</option>
+          <option value="05">5일</option>
+          <option value="06">6일</option>
+          <option value="07">7일</option>
+          <option value="08">8일</option>
+          <option value="09">9일</option>
+          <option value="10">10일</option>
+          <option value="11">11일</option>
+          <option value="12">12일</option>
+          <option value="13">13일</option>
+          <option value="14">14일</option>
+          <option value="15">15일</option>
+          <option value="16">16일</option>
+          <option value="17">17일</option>
+          <option value="18">18일</option>
+          <option value="19">19일</option>
+          <option value="20">20일</option>
+          <option value="21">21일</option>
+          <option value="22">22일</option>
+          <option value="23">23일</option>
+          <option value="24">24일</option>
+          <option value="25">25일</option>
+          <option value="26">26일</option>
+          <option value="27">27일</option>
+          <option value="28">28일</option>
+          <option value="29">29일</option>
+          <option value="30">30일</option>
+          <option value="31">31일</option></select>
+        </div></div>
           <div class="form-row">
             <label>성별</label>
             <div class="radio-group">
@@ -607,7 +1083,125 @@
       </div>
       <div class="form-row">
         <label>생년월일</label>
-        <input type="date" id="today-date">
+        <div class="date-select-wrap">
+          <select class="date-sel" id="today-date-year"><option value="">년도</option>
+          <option value="1940">1940년</option>
+          <option value="1941">1941년</option>
+          <option value="1942">1942년</option>
+          <option value="1943">1943년</option>
+          <option value="1944">1944년</option>
+          <option value="1945">1945년</option>
+          <option value="1946">1946년</option>
+          <option value="1947">1947년</option>
+          <option value="1948">1948년</option>
+          <option value="1949">1949년</option>
+          <option value="1950">1950년</option>
+          <option value="1951">1951년</option>
+          <option value="1952">1952년</option>
+          <option value="1953">1953년</option>
+          <option value="1954">1954년</option>
+          <option value="1955">1955년</option>
+          <option value="1956">1956년</option>
+          <option value="1957">1957년</option>
+          <option value="1958">1958년</option>
+          <option value="1959">1959년</option>
+          <option value="1960">1960년</option>
+          <option value="1961">1961년</option>
+          <option value="1962">1962년</option>
+          <option value="1963">1963년</option>
+          <option value="1964">1964년</option>
+          <option value="1965">1965년</option>
+          <option value="1966">1966년</option>
+          <option value="1967">1967년</option>
+          <option value="1968">1968년</option>
+          <option value="1969">1969년</option>
+          <option value="1970">1970년</option>
+          <option value="1971">1971년</option>
+          <option value="1972">1972년</option>
+          <option value="1973">1973년</option>
+          <option value="1974">1974년</option>
+          <option value="1975">1975년</option>
+          <option value="1976">1976년</option>
+          <option value="1977">1977년</option>
+          <option value="1978">1978년</option>
+          <option value="1979">1979년</option>
+          <option value="1980">1980년</option>
+          <option value="1981">1981년</option>
+          <option value="1982">1982년</option>
+          <option value="1983">1983년</option>
+          <option value="1984">1984년</option>
+          <option value="1985">1985년</option>
+          <option value="1986">1986년</option>
+          <option value="1987">1987년</option>
+          <option value="1988">1988년</option>
+          <option value="1989">1989년</option>
+          <option value="1990">1990년</option>
+          <option value="1991">1991년</option>
+          <option value="1992">1992년</option>
+          <option value="1993">1993년</option>
+          <option value="1994">1994년</option>
+          <option value="1995">1995년</option>
+          <option value="1996">1996년</option>
+          <option value="1997">1997년</option>
+          <option value="1998">1998년</option>
+          <option value="1999">1999년</option>
+          <option value="2000">2000년</option>
+          <option value="2001">2001년</option>
+          <option value="2002">2002년</option>
+          <option value="2003">2003년</option>
+          <option value="2004">2004년</option>
+          <option value="2005">2005년</option>
+          <option value="2006">2006년</option>
+          <option value="2007">2007년</option>
+          <option value="2008">2008년</option>
+          <option value="2009">2009년</option>
+          <option value="2010">2010년</option></select>
+          <select class="date-sel" id="today-date-month"><option value="">월</option>
+          <option value="01">1월</option>
+          <option value="02">2월</option>
+          <option value="03">3월</option>
+          <option value="04">4월</option>
+          <option value="05">5월</option>
+          <option value="06">6월</option>
+          <option value="07">7월</option>
+          <option value="08">8월</option>
+          <option value="09">9월</option>
+          <option value="10">10월</option>
+          <option value="11">11월</option>
+          <option value="12">12월</option></select>
+          <select class="date-sel" id="today-date-day"><option value="">일</option>
+          <option value="01">1일</option>
+          <option value="02">2일</option>
+          <option value="03">3일</option>
+          <option value="04">4일</option>
+          <option value="05">5일</option>
+          <option value="06">6일</option>
+          <option value="07">7일</option>
+          <option value="08">8일</option>
+          <option value="09">9일</option>
+          <option value="10">10일</option>
+          <option value="11">11일</option>
+          <option value="12">12일</option>
+          <option value="13">13일</option>
+          <option value="14">14일</option>
+          <option value="15">15일</option>
+          <option value="16">16일</option>
+          <option value="17">17일</option>
+          <option value="18">18일</option>
+          <option value="19">19일</option>
+          <option value="20">20일</option>
+          <option value="21">21일</option>
+          <option value="22">22일</option>
+          <option value="23">23일</option>
+          <option value="24">24일</option>
+          <option value="25">25일</option>
+          <option value="26">26일</option>
+          <option value="27">27일</option>
+          <option value="28">28일</option>
+          <option value="29">29일</option>
+          <option value="30">30일</option>
+          <option value="31">31일</option></select>
+        </div>
       </div>
       <div class="form-row">
         <label>성별</label>
@@ -641,7 +1235,125 @@
       </div>
       <div class="form-row">
         <label>생년월일</label>
-        <input type="date" id="yr-date">
+        <div class="date-select-wrap">
+          <select class="date-sel" id="yr-date-year"><option value="">년도</option>
+          <option value="1940">1940년</option>
+          <option value="1941">1941년</option>
+          <option value="1942">1942년</option>
+          <option value="1943">1943년</option>
+          <option value="1944">1944년</option>
+          <option value="1945">1945년</option>
+          <option value="1946">1946년</option>
+          <option value="1947">1947년</option>
+          <option value="1948">1948년</option>
+          <option value="1949">1949년</option>
+          <option value="1950">1950년</option>
+          <option value="1951">1951년</option>
+          <option value="1952">1952년</option>
+          <option value="1953">1953년</option>
+          <option value="1954">1954년</option>
+          <option value="1955">1955년</option>
+          <option value="1956">1956년</option>
+          <option value="1957">1957년</option>
+          <option value="1958">1958년</option>
+          <option value="1959">1959년</option>
+          <option value="1960">1960년</option>
+          <option value="1961">1961년</option>
+          <option value="1962">1962년</option>
+          <option value="1963">1963년</option>
+          <option value="1964">1964년</option>
+          <option value="1965">1965년</option>
+          <option value="1966">1966년</option>
+          <option value="1967">1967년</option>
+          <option value="1968">1968년</option>
+          <option value="1969">1969년</option>
+          <option value="1970">1970년</option>
+          <option value="1971">1971년</option>
+          <option value="1972">1972년</option>
+          <option value="1973">1973년</option>
+          <option value="1974">1974년</option>
+          <option value="1975">1975년</option>
+          <option value="1976">1976년</option>
+          <option value="1977">1977년</option>
+          <option value="1978">1978년</option>
+          <option value="1979">1979년</option>
+          <option value="1980">1980년</option>
+          <option value="1981">1981년</option>
+          <option value="1982">1982년</option>
+          <option value="1983">1983년</option>
+          <option value="1984">1984년</option>
+          <option value="1985">1985년</option>
+          <option value="1986">1986년</option>
+          <option value="1987">1987년</option>
+          <option value="1988">1988년</option>
+          <option value="1989">1989년</option>
+          <option value="1990">1990년</option>
+          <option value="1991">1991년</option>
+          <option value="1992">1992년</option>
+          <option value="1993">1993년</option>
+          <option value="1994">1994년</option>
+          <option value="1995">1995년</option>
+          <option value="1996">1996년</option>
+          <option value="1997">1997년</option>
+          <option value="1998">1998년</option>
+          <option value="1999">1999년</option>
+          <option value="2000">2000년</option>
+          <option value="2001">2001년</option>
+          <option value="2002">2002년</option>
+          <option value="2003">2003년</option>
+          <option value="2004">2004년</option>
+          <option value="2005">2005년</option>
+          <option value="2006">2006년</option>
+          <option value="2007">2007년</option>
+          <option value="2008">2008년</option>
+          <option value="2009">2009년</option>
+          <option value="2010">2010년</option></select>
+          <select class="date-sel" id="yr-date-month"><option value="">월</option>
+          <option value="01">1월</option>
+          <option value="02">2월</option>
+          <option value="03">3월</option>
+          <option value="04">4월</option>
+          <option value="05">5월</option>
+          <option value="06">6월</option>
+          <option value="07">7월</option>
+          <option value="08">8월</option>
+          <option value="09">9월</option>
+          <option value="10">10월</option>
+          <option value="11">11월</option>
+          <option value="12">12월</option></select>
+          <select class="date-sel" id="yr-date-day"><option value="">일</option>
+          <option value="01">1일</option>
+          <option value="02">2일</option>
+          <option value="03">3일</option>
+          <option value="04">4일</option>
+          <option value="05">5일</option>
+          <option value="06">6일</option>
+          <option value="07">7일</option>
+          <option value="08">8일</option>
+          <option value="09">9일</option>
+          <option value="10">10일</option>
+          <option value="11">11일</option>
+          <option value="12">12일</option>
+          <option value="13">13일</option>
+          <option value="14">14일</option>
+          <option value="15">15일</option>
+          <option value="16">16일</option>
+          <option value="17">17일</option>
+          <option value="18">18일</option>
+          <option value="19">19일</option>
+          <option value="20">20일</option>
+          <option value="21">21일</option>
+          <option value="22">22일</option>
+          <option value="23">23일</option>
+          <option value="24">24일</option>
+          <option value="25">25일</option>
+          <option value="26">26일</option>
+          <option value="27">27일</option>
+          <option value="28">28일</option>
+          <option value="29">29일</option>
+          <option value="30">30일</option>
+          <option value="31">31일</option></select>
+        </div>
       </div>
       <div class="form-grid">
         <div class="form-row">
@@ -728,7 +1440,7 @@
     <div class="modal-ad-top">
       <span class="ad-badge">광고</span>
       <div class="modal-timer-wrap">
-        <span class="modal-timer" id="modal-timer">5</span>
+        <span class="modal-timer" id="modal-timer">10</span>
         <span class="modal-timer-label">초 후 결과 확인</span>
       </div>
     </div>
@@ -738,12 +1450,13 @@
     </div>
     <div class="modal-divider"></div>
     <div class="modal-result-area">
-      <div class="modal-result-title">운세 분석 중</div>
+      <div class="modal-result-title" id="modal-result-title">운세 분석 중</div>
+      <div style="text-align:center; font-size:0.82rem; color:rgba(196,181,253,0.6); margin-bottom:10px;">🔮 AI가 운세를 분석하고 있어요<br>약 10초 정도 소요됩니다. 잠시만 기다려주세요!</div>
       <div class="result-loading" id="modal-loading">
         <div class="result-spinner"></div>
         <p>별자리와 사주를 읽고 있어요...</p>
       </div>
-      <div class="result-text" id="modal-result-text"></div>
+      <div class="result-text" id="modal-result-text" style="text-align:center; font-size:1rem; color:#C084FC; padding:12px 0;"></div>
     </div>
     <button class="modal-close-btn" id="modal-close-btn" onclick="closeModal()">✦ 결과 확인하기 ✦</button>
   </div>
@@ -808,6 +1521,17 @@ const quotes = [
 // ─── Prompts ──────────────────────────────────────────
 function buildPrompt(type, data) {
   const today = new Date().toLocaleDateString('ko-KR', {year:'numeric',month:'long',day:'numeric',weekday:'long'});
+  const format = `
+반드시 아래 규칙을 따라 작성해 주세요:
+- 각 항목 제목 앞에 관련 이모지를 붙여주세요
+- 제목은 이모지와 함께 한 줄로 쓰고, 내용은 그 아래에 충분히 풀어서 설명해 주세요
+- 천간, 지지, 오행, 기토, 토토 같은 전문 용어는 반드시 괄호 안에 쉬운 말로 설명해 주세요
+  예시: 기토(己土, 부드러운 흙의 기운)처럼요
+- 각 항목마다 최소 3~4문장 이상으로 충분히 설명해 주세요
+- 각 항목 사이에 빈 줄을 넣어 구분해 주세요
+- 마크다운 기호(**,##,* 등)는 절대 사용하지 마세요
+- 친근하고 따뜻한 문체로, 처음 듣는 사람도 이해할 수 있게 써주세요
+- 이모지를 적극 활용해서 읽기 쉽고 생동감 있게 써주세요`;
 
   if (type === 'saju') {
     return `당신은 한국의 전통 사주명리학 전문가입니다. 아래 정보를 바탕으로 사주팔자 운세를 풀이해 주세요.
@@ -817,15 +1541,28 @@ function buildPrompt(type, data) {
 태어난 시간: ${data.hour || '모름'}
 성별: ${data.gender}
 
-다음 항목을 포함하여 친절하고 신비로운 문체로 한국어로 작성해 주세요:
-1. 사주 기본 구조 (연주·월주·일주·시주 간략 설명)
-2. 이 사람의 타고난 성격과 기질
-3. 재물운
-4. 애정운
-5. 건강운
-6. 올해(2026년) 전반적인 운세 한마디
+다음 항목을 포함하여 작성해 주세요:
 
-각 항목은 줄바꿈으로 구분하고, 이모지 없이 격조 있게 써 주세요. 총 500자 내외.`;
+🔮 사주 기본 구조
+연주·월주·일주·시주가 무엇인지 쉽게 설명하고, 이 사람의 사주 구조가 어떤 특징을 가지는지 풀어서 설명해 주세요.
+
+✨ 타고난 성격과 기질
+이 사람의 천성적인 성격, 장점과 단점, 대인관계 스타일을 구체적으로 설명해 주세요.
+
+💰 재물운
+돈을 버는 방식, 재물과의 인연, 어떤 분야에서 재물이 들어오기 쉬운지 구체적으로 설명해 주세요.
+
+❤️ 애정운
+연애 스타일, 이상형, 인연을 만나기 좋은 시기 등을 따뜻하게 설명해 주세요.
+
+💪 건강운
+특히 주의해야 할 신체 부위나 건강 습관에 대해 구체적으로 조언해 주세요.
+
+🌟 올해(2026년) 전반적인 운세
+올해 전체적인 흐름과 주요 시기, 특히 좋은 달과 주의할 달을 알려주세요.
+
+${format}
+총 800자 이상으로 충분히 작성해 주세요.`;
   }
 
   if (type === 'sungmyung') {
@@ -834,14 +1571,195 @@ function buildPrompt(type, data) {
 이름: ${data.name}
 생년월일: ${data.date || '미입력'}
 
-다음을 포함하여 격조 있는 한국어로 작성해 주세요:
-1. 이름의 획수 분석 (원격·형격·이격·정격 간략 설명)
-2. 이름이 지닌 기운과 의미
-3. 이름이 삶에 미치는 영향 (성격, 대인관계, 사회운)
-4. 이름의 전반적인 길흉 판단
-5. 보완 조언 (색깔, 방향, 숫자 등)
+다음 항목을 포함하여 작성해 주세요:
 
-500자 내외, 이모지 없이 전통적인 문체로.`;
+📊 획수 분석
+원격·형격·이격·정격이 무엇인지 쉽게 설명하고, 이 이름의 획수 구조가 어떤 의미를 갖는지 풀어서 써주세요.
+
+✨ 이름이 지닌 기운과 의미
+각 한자나 글자가 가진 뜻과 에너지를 상세히 설명해 주세요.
+
+🌱 이름이 삶에 미치는 영향
+성격 형성, 대인관계, 사회적 성취에 이 이름이 어떤 영향을 주는지 구체적으로 설명해 주세요.
+
+⚖️ 이름의 전반적인 길흉 판단
+이 이름이 전반적으로 좋은 이름인지, 어떤 면에서 유리하고 어떤 면에서 주의가 필요한지 솔직하게 알려주세요.
+
+💡 보완 조언
+이 이름의 기운을 보완할 수 있는 색깔, 방향, 숫자, 생활 습관 등을 구체적으로 알려주세요.
+
+${format}
+총 800자 이상으로 충분히 작성해 주세요.`;
+  }
+
+  if (type === 'gunghap') {
+    return `당신은 한국 전통 사주 궁합 전문가입니다.
+
+첫 번째 사람:
+- 이름: ${data.name1}
+- 생년월일: ${data.date1}
+- 성별: ${data.gender1}
+
+두 번째 사람:
+- 이름: ${data.name2}
+- 생년월일: ${data.date2}
+- 성별: ${data.gender2}
+
+두 사람의 궁합을 다음 항목으로 상세히 분석해 주세요:
+
+🐾 띠 궁합
+두 사람의 띠가 어떤 관계인지, 왜 잘 맞거나 주의가 필요한지 이유를 충분히 설명해 주세요.
+
+🌊 오행 상생·상극 관계
+오행(목·화·토·금·수)이 무엇인지 쉽게 설명하고, 두 사람의 오행 관계가 어떤지 풀어서 써주세요.
+
+💕 애정 궁합 (0~100점)
+점수와 함께 왜 그 점수인지 이유를 구체적으로 설명하고, 두 사람의 애정 스타일이 어떻게 맞고 어떻게 다른지 알려주세요.
+
+💍 결혼·인연 궁합
+장기적인 관점에서 두 사람이 함께했을 때 어떤 삶을 살 수 있는지, 결혼 상대로서의 적합성을 솔직하게 설명해 주세요.
+
+⚠️ 함께할 때 주의할 점
+두 사람 사이에서 갈등이 생길 수 있는 부분과 그것을 해결하는 방법을 구체적으로 알려주세요.
+
+💌 두 사람에게 전하는 한마디
+따뜻하고 진심 어린 응원의 말을 전해주세요.
+
+${format}
+총 900자 이상으로 충분히 작성해 주세요.`;
+  }
+
+  if (type === 'today') {
+    return `당신은 한국 전통 명리학 전문가입니다.
+
+이름: ${data.name}
+생년월일: ${data.date}
+성별: ${data.gender}
+오늘 날짜: ${today}
+
+오늘 하루의 운세를 다음 항목으로 풀이해 주세요:
+
+🌅 오늘의 전체 운세
+오늘 하루 전체적인 기운과 흐름을 한눈에 알 수 있게 설명해 주세요.
+
+💰 오늘의 재물운
+오늘 돈과 관련해서 주의할 점이나 좋은 기회가 있는지 구체적으로 알려주세요.
+
+❤️ 오늘의 애정운
+오늘 인간관계나 연애에서 어떤 일이 생길 수 있는지, 어떻게 행동하면 좋은지 알려주세요.
+
+💪 오늘의 건강·컨디션
+오늘 몸 상태와 주의해야 할 점을 구체적으로 알려주세요.
+
+🍀 오늘의 행운 키워드
+오늘의 행운 숫자, 색깔, 방향을 알려주고 왜 그것인지 간략히 설명해 주세요.
+
+☀️ 오늘 하루를 위한 조언
+오늘 하루를 잘 보내기 위한 구체적인 행동 조언을 따뜻하게 전해주세요.
+
+${format}
+총 700자 이상으로 충분히 작성해 주세요.`;
+  }
+
+  if (type === 'yearly') {
+    const period = data.month ? `${data.year}년 ${data.month}월` : `${data.year}년 전체`;
+    return `당신은 한국 전통 명리학 전문가입니다.
+
+이름: ${data.name}
+생년월일: ${data.date}
+분석 기간: ${period}
+
+해당 기간의 운세를 다음 항목으로 풀이해 주세요:
+
+🌟 ${period} 전반적인 운세 흐름
+이 기간의 전체적인 기운과 큰 흐름을 충분히 설명해 주세요.
+
+💰 재물·사업운
+돈과 일에서 어떤 기회와 주의점이 있는지 구체적으로 알려주세요.
+
+❤️ 애정·인간관계운
+연애나 주변 사람들과의 관계에서 어떤 변화가 있을지 구체적으로 설명해 주세요.
+
+💪 건강운
+이 기간에 특히 주의해야 할 건강 이슈와 관리 방법을 알려주세요.
+
+⚠️ 주의해야 할 시기와 사항
+특히 조심해야 할 달이나 상황을 구체적으로 알려주세요.
+
+🍀 잘 보내기 위한 조언
+이 기간을 최대한 좋게 보내기 위한 실질적인 생활 조언을 해주세요.
+
+${format}
+총 800자 이상으로 충분히 작성해 주세요.`;
+  }
+
+  if (type === 'zodiac') {
+    return `당신은 한국 전통 명리학 전문가입니다.
+
+띠: ${data.zodiac}
+기간: ${data.period}
+오늘 날짜: ${today}
+
+${data.zodiac}의 ${data.period} 운세를 다음 항목으로 풀이해 주세요:
+
+🌟 전반적인 운세 흐름
+이 기간 ${data.zodiac}띠의 전체적인 기운과 흐름을 충분히 설명해 주세요.
+
+💰 재물·직업운
+일과 돈에서 어떤 기회와 주의점이 있는지 구체적으로 알려주세요.
+
+❤️ 애정·인간관계운
+연애나 주변 관계에서 어떤 변화가 있을지 따뜻하게 설명해 주세요.
+
+💪 건강운
+특히 주의해야 할 건강 이슈와 관리 방법을 알려주세요.
+
+🍀 행운의 방향과 색깔
+행운을 부르는 방향과 색깔을 알려주고 왜 그것인지 설명해 주세요.
+
+☀️ 한마디 조언
+이 기간을 잘 보내기 위한 핵심 조언을 따뜻하게 전해주세요.
+
+${format}
+총 700자 이상으로 충분히 작성해 주세요.`;
+  }
+}
+
+  if (type === 'saju') {
+    return `당신은 한국의 전통 사주명리학 전문가입니다. 아래 정보를 바탕으로 사주팔자 운세를 풀이해 주세요.
+
+이름: ${data.name}
+생년월일: ${data.date}
+태어난 시간: ${data.hour || '모름'}
+성별: ${data.gender}
+
+다음 항목을 포함하여 작성해 주세요:
+🔮 사주 기본 구조 (연주·월주·일주·시주 간략 설명)
+✨ 타고난 성격과 기질
+💰 재물운
+❤️ 애정운
+💪 건강운
+🌟 올해(2026년) 전반적인 운세 한마디
+
+${format}
+총 500자 내외.`;
+  }
+
+  if (type === 'sungmyung') {
+    return `당신은 한국 성명학 전문가입니다. 아래 이름을 성명학적으로 풀이해 주세요.
+
+이름: ${data.name}
+생년월일: ${data.date || '미입력'}
+
+다음 항목을 포함하여 작성해 주세요:
+📊 획수 분석 (원격·형격·이격·정격 간략 설명)
+✨ 이름이 지닌 기운과 의미
+🌱 이름이 삶에 미치는 영향 (성격, 대인관계, 사회운)
+⚖️ 이름의 전반적인 길흉 판단
+💡 보완 조언 (색깔, 방향, 숫자 등)
+
+${format}
+500자 내외.`;
   }
 
   if (type === 'gunghap') {
@@ -858,14 +1776,15 @@ function buildPrompt(type, data) {
 - 성별: ${data.gender2}
 
 두 사람의 궁합을 다음 항목으로 분석해 주세요:
-1. 두 사람의 띠 궁합
-2. 오행(五行) 상생·상극 관계
-3. 애정 궁합 (0~100점 척도로 점수 포함)
-4. 결혼/인연 궁합
-5. 함께할 때 주의할 점
-6. 두 사람에게 전하는 한마디
+🐾 띠 궁합
+🌊 오행(五行) 상생·상극 관계
+💕 애정 궁합 (0~100점 점수 포함)
+💍 결혼/인연 궁합
+⚠️ 함께할 때 주의할 점
+💌 두 사람에게 전하는 한마디
 
-600자 내외, 이모지 없이 격조 있게.`;
+${format}
+600자 내외.`;
   }
 
   if (type === 'today') {
@@ -877,14 +1796,15 @@ function buildPrompt(type, data) {
 오늘 날짜: ${today}
 
 오늘 하루의 운세를 다음 항목으로 풀이해 주세요:
-1. 오늘의 전체 운세 (한 문장 요약)
-2. 오늘의 재물운
-3. 오늘의 애정운
-4. 오늘의 건강·컨디션
-5. 오늘의 행운 키워드 (숫자, 색깔, 방향 중 하나)
-6. 오늘 하루를 위한 조언 한마디
+🌅 오늘의 전체 운세 (한 문장 요약)
+💰 오늘의 재물운
+❤️ 오늘의 애정운
+💪 오늘의 건강·컨디션
+🍀 오늘의 행운 키워드 (숫자, 색깔, 방향)
+☀️ 오늘 하루를 위한 조언 한마디
 
-400자 내외, 따뜻하고 신비로운 문체로.`;
+${format}
+400자 내외.`;
   }
 
   if (type === 'yearly') {
@@ -896,14 +1816,15 @@ function buildPrompt(type, data) {
 분석 기간: ${period}
 
 해당 기간의 운세를 다음 항목으로 풀이해 주세요:
-1. ${period} 전반적인 운세 흐름
-2. 재물·사업운
-3. 애정·인간관계운
-4. 건강운
-5. 특히 조심해야 할 시기나 주의사항
-6. ${period}을 잘 보내기 위한 조언
+🌟 ${period} 전반적인 운세 흐름
+💰 재물·사업운
+❤️ 애정·인간관계운
+💪 건강운
+⚠️ 특히 조심해야 할 시기나 주의사항
+🍀 ${period}을 잘 보내기 위한 조언
 
-500자 내외, 격조 있는 한국어로.`;
+${format}
+500자 내외.`;
   }
 
   if (type === 'zodiac') {
@@ -914,14 +1835,15 @@ function buildPrompt(type, data) {
 오늘 날짜: ${today}
 
 ${data.zodiac}의 ${data.period} 운세를 다음 항목으로 풀이해 주세요:
-1. 전반적인 운세 흐름
-2. 재물·직업운
-3. 애정·인간관계운
-4. 건강운
-5. 행운의 방향과 색깔
-6. 한마디 조언
+🌟 전반적인 운세 흐름
+💰 재물·직업운
+❤️ 애정·인간관계운
+💪 건강운
+🍀 행운의 방향과 색깔
+☀️ 한마디 조언
 
-400자 내외, 신비롭고 격조 있는 문체로.`;
+${format}
+400자 내외.`;
   }
 }
 
@@ -937,7 +1859,7 @@ function submitForm(type) {
   if (type === 'saju') {
     data = {
       name: document.getElementById('saju-name').value.trim(),
-      date: document.getElementById('saju-date').value,
+      date: getDateValue('saju-date'),
       hour: document.getElementById('saju-hour').value,
       gender: document.querySelector('input[name="saju-gender"]:checked')?.value || '남성'
     };
@@ -945,30 +1867,30 @@ function submitForm(type) {
   } else if (type === 'sungmyung') {
     data = {
       name: document.getElementById('sm-name').value.trim(),
-      date: document.getElementById('sm-date').value,
+      date: getDateValue('sm-date'),
     };
     if (!data.name) valid = false;
   } else if (type === 'gunghap') {
     data = {
       name1: document.getElementById('gh-name1').value.trim(),
-      date1: document.getElementById('gh-date1').value,
+      date1: getDateValue('gh-date1'),
       gender1: document.querySelector('input[name="gh-g1"]:checked')?.value || '남성',
       name2: document.getElementById('gh-name2').value.trim(),
-      date2: document.getElementById('gh-date2').value,
+      date2: getDateValue('gh-date2'),
       gender2: document.querySelector('input[name="gh-g2"]:checked')?.value || '여성',
     };
     if (!data.name1 || !data.date1 || !data.name2 || !data.date2) valid = false;
   } else if (type === 'today') {
     data = {
       name: document.getElementById('today-name').value.trim(),
-      date: document.getElementById('today-date').value,
+      date: getDateValue('today-date'),
       gender: document.querySelector('input[name="today-g"]:checked')?.value || '남성',
     };
     if (!data.name || !data.date) valid = false;
   } else if (type === 'yearly') {
     data = {
       name: document.getElementById('yr-name').value.trim(),
-      date: document.getElementById('yr-date').value,
+      date: getDateValue('yr-date'),
       year: document.getElementById('yr-year').value,
       month: document.getElementById('yr-month').value,
     };
@@ -1002,7 +1924,7 @@ function openModal(type, data) {
   const quoteSourceEl = document.getElementById('modal-quote-source');
 
   // Reset
-  timerEl.textContent = '5';
+  timerEl.textContent = '10';
   loadingEl.style.display = 'flex';
   resultTextEl.classList.remove('show');
   resultTextEl.textContent = '';
@@ -1016,7 +1938,7 @@ function openModal(type, data) {
   quoteSourceEl.textContent = q.src;
 
   // Countdown
-  let sec = 5;
+  let sec = 10;
   let timerDone = false;
   let aiDone = false;
   let aiResult = '';
@@ -1038,14 +1960,16 @@ function openModal(type, data) {
     aiResult = result;
     aiDone = true;
     loadingEl.style.display = 'none';
-    resultTextEl.textContent = result;
+    document.getElementById('modal-result-title').textContent = '✨ 운세 분석 완료!';
+    resultTextEl.textContent = '아래 버튼을 눌러 결과를 확인하세요 🔮';
     resultTextEl.classList.add('show');
     tryReveal();
   }).catch(() => {
     aiResult = '운세를 불러오는 데 문제가 생겼어요. 잠시 후 다시 시도해 주세요.';
     aiDone = true;
     loadingEl.style.display = 'none';
-    resultTextEl.textContent = aiResult;
+    document.getElementById('modal-result-title').textContent = '⚠️ 오류 발생';
+    resultTextEl.textContent = '운세를 불러오는 데 문제가 생겼어요. 잠시 후 다시 시도해 주세요.';
     resultTextEl.classList.add('show');
     tryReveal();
   });
@@ -1054,7 +1978,7 @@ function openModal(type, data) {
     if (timerDone && aiDone) {
       closeBtn.classList.add('show');
       // Pre-fill result card
-      document.getElementById('result-' + currentType + '-content').textContent = aiResult;
+      document.getElementById('result-' + currentType + '-content').innerHTML = formatResult(aiResult);
     }
   }
 }
@@ -1070,7 +1994,29 @@ function closeModal() {
   }
 }
 
-// ─── Claude API (Netlify Function 경유) ──────────────
+// ─── 날짜 값 가져오기 ──────────────
+function getDateValue(id) {
+  const y = document.getElementById(id + '-year')?.value;
+  const m = document.getElementById(id + '-month')?.value;
+  const d = document.getElementById(id + '-day')?.value;
+  if (!y || !m || !d) return '';
+  return `${y}-${m}-${d}`;
+}
+
+// ─── 마크다운 → HTML 변환 ──────────────
+function formatResult(text) {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/^#{1,3}\s+(.+)$/gm, '<h4 style="color:#C084FC;margin:14px 0 6px;font-size:1rem;">$1</h4>')
+    .replace(/^[-*]\s+(.+)$/gm, '<li style="margin:4px 0 4px 16px;">$1</li>')
+    .replace(/(<li.*<\/li>\n?)+/g, '<ul style="margin:8px 0;">$&</ul>')
+    .replace(/\n{2,}/g, '</p><p style="margin:8px 0;">')
+    .replace(/\n/g, '<br>')
+    .replace(/^/, '<p style="margin:8px 0;">')
+    .replace(/$/, '</p>');
+}
+
+// ─── Claude API ──────────────
 async function callClaude(prompt) {
   const response = await fetch('/api/fortune', {
     method: 'POST',
